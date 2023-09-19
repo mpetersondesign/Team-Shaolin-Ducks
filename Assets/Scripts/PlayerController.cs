@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The number of jumps the player has currently left to expend")]
     public int JumpsLeft;
 
+    public Vector2 CurrentVelocity;
+
     [Header("Dash Parameters")]
     public float DashBurstForce;
     public float CurrentDashBurstForce;
@@ -34,8 +36,6 @@ public class PlayerController : MonoBehaviour
     public bool DashBurstSpent;
 
     [Header("Forces")]
-    [Tooltip("The force of the user's input we'll apply to the rigidbody")]
-    public Vector2 Velocity;
     [Tooltip("Any additional forces that need to act upon the rigidbody")]
     public Vector2 AddForces;
     [Tooltip("The power to which we magnitude the forces applied")]
@@ -51,7 +51,9 @@ public class PlayerController : MonoBehaviour
     public bool JumpThisFrame;
     public bool IsGrounded;
     public bool IsSkidding;
-
+    public bool SlingshotSpent;
+    public bool IsSlinging;
+    public bool IsSlung;
 
     public Vector2 GroundCheckSize;
     public Vector2 GroundCheckPos;
@@ -78,21 +80,14 @@ public class PlayerController : MonoBehaviour
     {
         GroundedCheck();
         StateManagement();
+        CurrentVelocity = RB.velocity;
     }
 
     private void StateManagement()
     {
-        if (IsGrounded && !IsJumping)
-            SM.ChangeState("Grounded");
-        else
-            SM.ChangeState("Aerial");
-
-        if (PI.IsActionPressed(PlayerInputs.PlayerAction.Dash))
-            IsDashing = true;
-        else
+        if(!IsSlinging && !IsGrounded)
         {
-            IsDashing = false;
-            DashBurstSpent = false;
+            SM.ChangeState("Aerial");
         }
     }
 
@@ -152,6 +147,7 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         BoxCollider2D BC = GetComponent<BoxCollider2D>();
+
         //Draw main collider
         Color colliderColor = Color.green;
         colliderColor.a = 0.5f;
@@ -166,6 +162,11 @@ public class PlayerController : MonoBehaviour
         groundcheckColor.a = 0.5f;
         Gizmos.color = groundcheckColor;
         Gizmos.DrawCube((Vector2)transform.position + GroundCheckPos, GroundCheckSize);
+
+        //Draw velocity ray
+        Color velocityColor = Color.yellow;
+        Gizmos.color = velocityColor;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)RB.velocity);
     }
 
     void OnGUI()

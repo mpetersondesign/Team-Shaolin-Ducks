@@ -13,6 +13,9 @@ public class GroundedState : State
     {
         if (Player.IsJumping == false && Player.RB.velocity.y > 0)
             Player.RB.velocity = new Vector2(Player.RB.velocity.x, 0);
+
+        Player.SlingshotSpent = false;
+        Player.IsSlinging = false;
     }
 
     public override void Exit(string next_key, State next_state)
@@ -22,10 +25,30 @@ public class GroundedState : State
 
     public override void Tick()
     {
+        if (Player.IsSlung && Player.RB.velocity.y > GetComponent<SlingingState>().BounceThreshold)
+        {
+            Player.IsSlung = false;
+            var groundNormal = Physics2D.Raycast(transform.position, (Vector2)transform.position + Player.RB.velocity, 0.1f, Player.TerrainLayer).normal;
+
+            //We want this to be a reflection of the normal being hit
+            Vector2 bounceDirection = (Vector2.up);
+            float bouncePower = (Mathf.Abs(Player.RB.velocity.y) * GetComponent<SlingingState>().BounceForce);
+            Mathf.Clamp(bouncePower, 0, GetComponent<SlingingState>().MaxBounceForce);
+            Player.RB.AddForce(bounceDirection * bouncePower, ForceMode2D.Impulse);
+        }
+
         if (Player.PI.IsActionPressed(PlayerInputs.PlayerAction.Jump))
         {
             Player.IsJumping = true;
             Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength);
+        }
+
+        if (Player.PI.IsActionPressed(PlayerInputs.PlayerAction.Dash))
+            Player.IsDashing = true;
+        else
+        {
+            Player.IsDashing = false;
+            Player.DashBurstSpent = false;
         }
     }
 }

@@ -27,6 +27,14 @@ public class AerialState : State
             Player.IsJumping = false;
 
         if (Player.IsGrounded)
+        {
             GetComponent<StateMachine>().ChangeState("Grounded");
+        }
+
+        if(Player.PI.IsActionPressed(PlayerInputs.PlayerAction.Dash) && !Player.SlingshotSpent)
+        {
+            Player.IsSlinging = true;
+            Player.SM.ChangeState("Slinging");
+        }
     }
 }
