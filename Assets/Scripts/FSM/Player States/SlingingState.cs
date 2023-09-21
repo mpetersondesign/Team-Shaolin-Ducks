@@ -20,8 +20,10 @@ public class SlingingState : State
 
     public override void Enter(string previous_key, State previous_state)
     {
+        Player.PC.size = Player.SlingshotColliderSize;
         Time.timeScale = SlowPercent;
         SlingIndicator.gameObject.SetActive(true);
+        Player.PA.Play("Slung");
     }
 
     public override void Exit(string next_key, State next_state)

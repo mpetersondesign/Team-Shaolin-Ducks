@@ -55,8 +55,18 @@ public class PlayerController : MonoBehaviour
     public bool IsSlinging;
     public bool IsSlung;
 
+    [Header("Collider Modifications")]
+    public Vector2 DefaultColliderSize;
+    public Vector2 DefaultColliderOffset;
+    public Vector2 SlingshotColliderSize;
+    public Vector2 SlingshotColliderOffset;
+    public Vector2 SlidingColliderSize;
+    public Vector2 SlidingColliderOffset;
+
+    [Header("Ground Check Modifications")]
     public Vector2 GroundCheckSize;
     public Vector2 GroundCheckPos;
+
     public Vector2 ExternalForces;
 
     public LayerMask TerrainLayer;
@@ -74,6 +84,10 @@ public class PlayerController : MonoBehaviour
         PI = GetComponent<PlayerInputs>();
         SM = GetComponent<StateMachine>();
         RB = GetComponent<Rigidbody2D>();
+
+        DefaultColliderSize = PC.size;
+        DefaultColliderOffset = PC.offset;
+        SlingshotColliderSize = new Vector2(PC.size.x, PC.size.y / 2);
     }
 
     void Update()
@@ -94,7 +108,7 @@ public class PlayerController : MonoBehaviour
     private void GroundedCheck()
     {
         IsGrounded = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
-                                       GroundCheckSize, 0, Vector3.down, 0f);
+                                       GroundCheckSize, 0, Vector3.down, 0.1f);
     }
 
     void FixedUpdate()
@@ -166,11 +180,15 @@ public class PlayerController : MonoBehaviour
         //Draw velocity ray
         Color velocityColor = Color.yellow;
         Gizmos.color = velocityColor;
-        Gizmos.DrawLine(transform.position, transform.position + (Vector3)RB.velocity);
+        if(RB != null)
+            Gizmos.DrawLine(transform.position, transform.position + (Vector3)RB.velocity);
     }
 
     void OnGUI()
     {
         GUI.Box(new Rect(10, 10, 200, 25), "State: " + SM.CurrentState.Key);
+        GUI.Box(new Rect(10, 35, 200, 25), "Dashing: " + IsDashing);
+        GUI.Box(new Rect(10, 60, 200, 25), "Jumping: " + IsJumping);
+        GUI.Box(new Rect(10, 85, 200, 25), "Slung: " + IsSlung);
     }
 }

@@ -16,6 +16,9 @@ public class GroundedState : State
 
         Player.SlingshotSpent = false;
         Player.IsSlinging = false;
+        Player.PC.size = Player.DefaultColliderSize;
+        Player.PA.Play("Idle");
+        Player.IsSlung = false;
     }
 
     public override void Exit(string next_key, State next_state)
@@ -25,6 +28,7 @@ public class GroundedState : State
 
     public override void Tick()
     {
+        /* Bounce mechanic (someone take a look at this pls :3 )
         if (Player.IsSlung && Player.RB.velocity.y > GetComponent<SlingingState>().BounceThreshold)
         {
             Player.IsSlung = false;
@@ -35,7 +39,7 @@ public class GroundedState : State
             float bouncePower = (Mathf.Abs(Player.RB.velocity.y) * GetComponent<SlingingState>().BounceForce);
             Mathf.Clamp(bouncePower, 0, GetComponent<SlingingState>().MaxBounceForce);
             Player.RB.AddForce(bounceDirection * bouncePower, ForceMode2D.Impulse);
-        }
+        } */
 
         if (Player.PI.IsActionPressed(PlayerInputs.PlayerAction.Jump))
         {
