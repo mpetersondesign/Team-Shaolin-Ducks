@@ -22,10 +22,11 @@ public class GroundedState : State
 
     public override void Tick()
     {
-        if (Player.PI.IsActionPressed(PlayerInputs.PlayerAction.Jump))
+        Debug.Log("Tick");
+
+        if (Player.PI.OnPress(PlayerInputs.PlayerAction.Jump))
         {
-            Player.IsJumping = true;
-            Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength);
+            Player.Jump();
         }
     }
 }

@@ -639,13 +639,10 @@ MonoBehaviour:
   MoveSpeed: 10
   RunSpeed: 15
   MoveForce: 0
-  CurrentAccel: 0
   AccelAmount: 3
   DeaccelAmount: 5
   JumpStrength: 13
-  FacingDirection: 0
-  JumpCount: 2
-  JumpsLeft: 0
+  MaxJumps: 2
   DashBurstForce: 5
   CurrentDashBurstForce: 0
   DashBurstForceDecay: 0
@@ -657,22 +654,12 @@ MonoBehaviour:
   CanMove: 0
   LockAnimation: 0
   NoClip: 0
-  IsDashing: 0
-  IsJumping: 0
-  JumpThisFrame: 0
-  IsGrounded: 0
-  IsSkidding: 0
   GroundCheckSize: {x: 0.75, y: 0.5}
   GroundCheckPos: {x: 0, y: -0.85}
   ExternalForces: {x: 0, y: 0}
   TerrainLayer:
     serializedVersion: 2
     m_Bits: 1
-  PC: {fileID: 0}
-  SM: {fileID: 0}
-  PI: {fileID: 0}
-  RB: {fileID: 0}
-  PA: {fileID: 0}
 --- !u!4 &386630587
 Transform:
   m_ObjectHideFlags: 0

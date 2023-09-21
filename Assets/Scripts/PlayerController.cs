@@ -6,26 +6,34 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Parameters")]
+    [SerializeField]
     [Tooltip("The base speed the player can move")]
-    public float MoveSpeed;
+    private float MoveSpeed;
+    [SerializeField]
     [Tooltip("The running speed the player can move")]
-    public float RunSpeed;
+    private float RunSpeed;
+    [SerializeField]
     [Tooltip("The current magnitude representing the speed the player is currently moving at")]
-    public float MoveForce;
-    [Tooltip("The current acceleration force applied to the character's horizontal movement")]
-    public float CurrentAccel;
+    private float MoveForce;
+    [SerializeField]
     [Tooltip("The force at which the player will accelerate")]
-    public float AccelAmount;
+    private float AccelAmount;
+    [SerializeField]
     [Tooltip("The force at which the player will deaccelerate")]
-    public float DeaccelAmount;
+    private float DeaccelAmount;
+    [SerializeField]
     [Tooltip("The force at which the player will jump")]
-    public float JumpStrength;
-    [Tooltip("The direction the player is currently facing")]
-    public float FacingDirection;
+    private float JumpStrength;
+    [SerializeField]
     [Tooltip("The number of jumps the player has")]
-    public int JumpCount = 2;
-    [Tooltip("The number of jumps the player has currently left to expend")]
-    public int JumpsLeft;
+    private int MaxJumps = 2;
+
+    //[Tooltip("The current acceleration force applied to the character's horizontal movement")]
+    private float CurrentAccel;
+    //[Tooltip("The direction the player is currently facing")]
+    private float FacingDirection;
+    //[Tooltip("The number of jumps the player has currently left to expend")]
+    private int JumpsLeft;
 
     [Header("Dash Parameters")]
     public float DashBurstForce;
@@ -46,32 +54,45 @@ public class PlayerController : MonoBehaviour
     public bool CanMove = false;
     public bool LockAnimation = false;
     public bool NoClip = false;
-    public bool IsDashing = false;
-    public bool IsJumping = false;
-    public bool JumpThisFrame;
-    public bool IsGrounded;
-    public bool IsSkidding;
 
+    private bool isDashing = false;
+    private bool isJumping = false;
+    // currently unused
+    // private bool jumpThisFrame;
+    private bool isGrounded;
+    private bool isSkidding;
 
     public Vector2 GroundCheckSize;
     public Vector2 GroundCheckPos;
     public Vector2 ExternalForces;
 
     public LayerMask TerrainLayer;
-    
-    public BoxCollider2D PC;
-    public StateMachine SM;
-    public PlayerInputs PI;
-    public Rigidbody2D RB;
-    public Animator PA;
+
+    private BoxCollider2D pc;
+    private StateMachine sm;
+    private PlayerInputs pi;
+    private Rigidbody2D rb;
+    private Animator pa;
+
+    public bool IsDashing { get => isDashing; }
+    public bool IsJumping { get => isJumping; }
+    // currently unused
+    // public bool JumpThisFrame { get => jumpThisFrame; }
+    public bool IsGrounded { get => isGrounded; }
+    public bool IsSkidding { get => isSkidding; }
+    public BoxCollider2D PC { get => pc; }
+    public StateMachine SM { get => sm; }
+    public PlayerInputs PI { get => pi; }
+    public Rigidbody2D RB { get => rb; }
+    public Animator PA { get => pa; }
 
     void Awake()
     {
-        PA = GetComponentInChildren<Animator>();
-        PC = GetComponent<BoxCollider2D>();
-        PI = GetComponent<PlayerInputs>();
-        SM = GetComponent<StateMachine>();
-        RB = GetComponent<Rigidbody2D>();
+        pa = GetComponentInChildren<Animator>();
+        pc = GetComponent<BoxCollider2D>();
+        pi = GetComponent<PlayerInputs>();
+        sm = GetComponent<StateMachine>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -87,24 +108,44 @@ public class PlayerController : MonoBehaviour
         else
             SM.ChangeState("Aerial");
 
-        if (PI.IsActionPressed(PlayerInputs.PlayerAction.Dash))
-            IsDashing = true;
+        if (PI.IsPressed(PlayerInputs.PlayerAction.Dash))
+            isDashing = true;
         else
         {
-            IsDashing = false;
+            isDashing = false;
             DashBurstSpent = false;
         }
     }
 
     private void GroundedCheck()
     {
-        IsGrounded = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
+        isGrounded = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
                                        GroundCheckSize, 0, Vector3.down, 0f);
     }
 
     void FixedUpdate()
     {
         MovePlayer();
+    }
+
+    public void MoveLeft()
+    {
+
+    }
+
+    public void MoveRight()
+    {
+
+    }
+
+    public void Jump()
+    {
+        if (JumpsLeft > 0)
+        {
+            --JumpsLeft;
+            isJumping = true;
+            rb.velocity = new Vector2(rb.velocity.x, JumpStrength);
+        }
     }
 
     private void MovePlayer()
@@ -132,10 +173,11 @@ public class PlayerController : MonoBehaviour
 
         if(IsGrounded)
         {
+            JumpsLeft = MaxJumps;
             if (Mathf.Sign(RB.velocity.x) != Mathf.Sign(H_Axis) && H_Axis != 0)
-                IsSkidding = true;
+                isSkidding = true;
             else
-                IsSkidding = false;
+                isSkidding = false;
         }
 
         if (IsDashing && DashBurstSpent == false)
@@ -147,6 +189,9 @@ public class PlayerController : MonoBehaviour
         RB.AddForce(movement * Vector2.right);
         RB.AddForce(AddForces);
         AddForces = Vector3.zero;
+
+        if (rb.velocity.y < 0)
+            isJumping = false;
     }
 
     private void OnDrawGizmos()
