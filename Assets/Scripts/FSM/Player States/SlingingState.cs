@@ -55,7 +55,7 @@ public class SlingingState : State
             Player.IsSlinging = false;
         }
 
-        if (!Player.PI.IsActionPressed(PlayerInputs.PlayerAction.Dash))
+        if (!Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))
             Player.IsSlinging = false;
     }
 }

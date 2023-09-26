@@ -26,17 +26,12 @@ public class AerialState : State
 
     public override void Tick()
     {
-        if (Player.PI.OnPress(PlayerInputs.PlayerAction.Jump))
-        {
-            Player.Jump();
-        }
-
         if (Player.IsGrounded)
         {
             GetComponent<StateMachine>().ChangeState("Grounded");
         }
 
-        if(Player.PI.IsActionPressed(PlayerInputs.PlayerAction.Dash) && !Player.SlingshotSpent)
+        if(Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash) && !Player.SlingshotSpent)
         {
             Player.IsSlinging = true;
             Player.SM.ChangeState("Slinging");

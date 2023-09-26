@@ -8,32 +8,31 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Parameters")]
     [SerializeField]
     [Tooltip("The base speed the player can move")]
-    private float MoveSpeed;
+    public float MoveSpeed;
     [SerializeField]
     [Tooltip("The running speed the player can move")]
-    private float RunSpeed;
+    public float RunSpeed;
     [SerializeField]
     [Tooltip("The current magnitude representing the speed the player is currently moving at")]
-    private float MoveForce;
+    public float MoveForce;
     [SerializeField]
     [Tooltip("The force at which the player will accelerate")]
-    private float AccelAmount;
+    public float AccelAmount;
     [SerializeField]
     [Tooltip("The force at which the player will deaccelerate")]
-    private float DeaccelAmount;
+    public float DeaccelAmount;
     [SerializeField]
     [Tooltip("The force at which the player will jump")]
-    private float JumpStrength;
+    public float JumpStrength;
     [SerializeField]
     [Tooltip("The number of jumps the player has")]
-    private int MaxJumps = 2;
-
-    //[Tooltip("The current acceleration force applied to the character's horizontal movement")]
-    private float CurrentAccel;
-    //[Tooltip("The direction the player is currently facing")]
-    private float FacingDirection;
-    //[Tooltip("The number of jumps the player has currently left to expend")]
-    private int JumpsLeft;
+    public int MaxJumps = 2;
+    [Tooltip("The current acceleration force applied to the character's horizontal movement")]
+    public float CurrentAccel;
+    [Tooltip("The direction the player is currently facing")]
+    public float FacingDirection;
+    [Tooltip("The number of jumps the player has currently left to expend")]
+    public int JumpsLeft;
 
     public Vector2 CurrentVelocity;
 
@@ -79,23 +78,11 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask TerrainLayer;
 
-    private BoxCollider2D pc;
-    private StateMachine sm;
-    private PlayerInputs pi;
-    private Rigidbody2D rb;
-    private Animator pa;
-
-    public bool IsDashing { get => isDashing; }
-    public bool IsJumping { get => isJumping; }
-    // currently unused
-    // public bool JumpThisFrame { get => jumpThisFrame; }
-    public bool IsGrounded { get => isGrounded; }
-    public bool IsSkidding { get => isSkidding; }
-    public BoxCollider2D PC { get => pc; }
-    public StateMachine SM { get => sm; }
-    public PlayerInputs PI { get => pi; }
-    public Rigidbody2D RB { get => rb; }
-    public Animator PA { get => pa; }
+    public BoxCollider2D PC;
+    public StateMachine SM;
+    public PlayerInputs PI;
+    public Rigidbody2D RB;
+    public Animator PA;
 
     void Awake()
     {
@@ -123,10 +110,10 @@ public class PlayerController : MonoBehaviour
             SM.ChangeState("Grounded");
 
         if (PI.IsPressed(PlayerInputs.PlayerAction.Dash))
-            isDashing = true;
+            IsDashing = true;
         else
         {
-            isDashing = false;
+            IsDashing = false;
             DashBurstSpent = false;
         }
         if(!IsSlinging && !IsGrounded)
@@ -144,26 +131,6 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         MovePlayer();
-    }
-
-    public void MoveLeft()
-    {
-
-    }
-
-    public void MoveRight()
-    {
-
-    }
-
-    public void Jump()
-    {
-        if (JumpsLeft > 0)
-        {
-            --JumpsLeft;
-            isJumping = true;
-            rb.velocity = new Vector2(rb.velocity.x, JumpStrength);
-        }
     }
 
     private void MovePlayer()
@@ -193,9 +160,9 @@ public class PlayerController : MonoBehaviour
         {
             JumpsLeft = MaxJumps;
             if (Mathf.Sign(RB.velocity.x) != Mathf.Sign(H_Axis) && H_Axis != 0)
-                isSkidding = true;
+                IsSkidding = true;
             else
-                isSkidding = false;
+                IsSkidding = false;
         }
 
         if (IsDashing && DashBurstSpent == false)
@@ -208,8 +175,8 @@ public class PlayerController : MonoBehaviour
         RB.AddForce(AddForces);
         AddForces = Vector3.zero;
 
-        if (rb.velocity.y < 0)
-            isJumping = false;
+        if (RB.velocity.y < 0)
+            IsJumping = false;
     }
 
     private void OnDrawGizmos()
