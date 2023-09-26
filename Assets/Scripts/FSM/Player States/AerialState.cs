@@ -5,6 +5,9 @@ using UnityEngine;
 public class AerialState : State
 {
     private PlayerController Player;
+
+
+
     protected override void OnStateInitialize()
     {
         Player = GetComponent<PlayerController>();
@@ -23,8 +26,10 @@ public class AerialState : State
 
     public override void Tick()
     {
-        if (Player.RB.velocity.y < 0)
-            Player.IsJumping = false;
+        if (Player.PI.OnPress(PlayerInputs.PlayerAction.Jump))
+        {
+            Player.Jump();
+        }
 
         if (Player.IsGrounded)
         {

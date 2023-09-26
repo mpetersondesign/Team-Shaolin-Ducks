@@ -28,6 +28,7 @@ public class GroundedState : State
 
     public override void Tick()
     {
+        if (Player.PI.OnPress(PlayerInputs.PlayerAction.Jump))
         /* Bounce mechanic (someone take a look at this pls :3 )
         if (Player.IsSlung && Player.RB.velocity.y > GetComponent<SlingingState>().BounceThreshold)
         {
@@ -43,8 +44,7 @@ public class GroundedState : State
 
         if (Player.PI.IsActionPressed(PlayerInputs.PlayerAction.Jump))
         {
-            Player.IsJumping = true;
-            Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength);
+            Player.Jump();
         }
 
         if (Player.PI.IsActionPressed(PlayerInputs.PlayerAction.Dash))
