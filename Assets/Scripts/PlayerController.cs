@@ -55,12 +55,12 @@ public class PlayerController : MonoBehaviour
     public bool NoClip = false;
     public bool IsDashing = false;
     public bool IsJumping = false;
-    public bool JumpThisFrame;
     public bool IsGrounded;
     public bool IsSkidding;
-    public bool SlingshotSpent;
     public bool IsSlinging;
     public bool IsSlung;
+    public bool SlingshotSpent;
+    public int AgainstWall = 0;
 
     [Header("Collider Modifications")]
     public Vector2 DefaultColliderSize;
@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 SlingshotColliderOffset;
     public Vector2 SlidingColliderSize;
     public Vector2 SlidingColliderOffset;
+    public float WallDetectorLength;
 
     [Header("Ground Check Modifications")]
     public Vector2 GroundCheckSize;
@@ -86,12 +87,14 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        //Initialize references
         PA = GetComponentInChildren<Animator>();
         PC = GetComponent<BoxCollider2D>();
         PI = GetComponent<PlayerInputs>();
         SM = GetComponent<StateMachine>();
         RB = GetComponent<Rigidbody2D>();
 
+        //Set defaults
         DefaultColliderSize = PC.size;
         DefaultColliderOffset = PC.offset;
         SlingshotColliderSize = new Vector2(PC.size.x, PC.size.y / 2);
@@ -99,31 +102,57 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //Ground/Wall Detection
         GroundedCheck();
+        WallDetection();
+
+        //Manage our states per-frame if needed
         StateManagement();
+
+        //Update our inspector readout for velocity
         CurrentVelocity = RB.velocity;
+    }
+
+    private void WallDetection()
+    {
+        //1 = right
+        //-1 = left
+        // 0 = none
+
+        if (Physics2D.Raycast(transform.position, Vector2.right, WallDetectorLength, TerrainLayer))
+            AgainstWall = 1;
+        else if (Physics2D.Raycast(transform.position, Vector2.left, WallDetectorLength, TerrainLayer))
+            AgainstWall = -1;
+        else
+            AgainstWall = 0;
     }
 
     private void StateManagement()
     {
+        //If we're grounded and not jumping up
         if (IsGrounded && !IsJumping)
-            SM.ChangeState("Grounded");
+            SM.ChangeState("Grounded"); //Our state should be grounded
 
+        //If we've pressed dash
         if (PI.IsPressed(PlayerInputs.PlayerAction.Dash))
-            IsDashing = true;
-        else
+            IsDashing = true; //Start dashing
+        else //Otherwise
         {
+            //We're not dashing
             IsDashing = false;
+
+            //And our dash burst should reset
             DashBurstSpent = false;
         }
+
+        //If we're not slinging, and we're not on the ground
         if(!IsSlinging && !IsGrounded)
-        {
-            SM.ChangeState("Aerial");
-        }
+            SM.ChangeState("Aerial"); //Switch to aerial
     }
 
     private void GroundedCheck()
     {
+        //Set our grounded bool to be the result of this boxcast per-frame
         IsGrounded = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
                                        GroundCheckSize, 0, Vector3.down, 0.1f);
     }
@@ -135,46 +164,66 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
+        //Interpret our H_Axis variable from our input script
         float H_Axis = Input.GetAxisRaw(PI.H_AxisName);
+
+        //Identify what speed we want to be moving at
         float targetSpeed;
+
+        //MoveForce is a variable that will tell us the current speed of our player
         MoveForce = Mathf.Abs(RB.velocity.x);
 
+        //If we're dashing
         if(IsDashing)
+            //Then our target speed becomes our RunSpeed
             targetSpeed = H_Axis * RunSpeed;
-        else
+        else //Otherwise
+            //Our target speed is our default MoveSpeed
             targetSpeed = H_Axis * MoveSpeed;
 
+        //Our speed difference is the difference between our current speed and our target
         float speedDiff = targetSpeed - RB.velocity.x;
 
         //If the ABS of targetSpeed is greater than 0, apply Accel, otherwise Deaccel.
         CurrentAccel = (Mathf.Abs(targetSpeed) > 0.01f) ? AccelAmount : DeaccelAmount;
 
+        //I don't remember what this does lol but it's very important
         float movement = Mathf.Pow(Mathf.Abs(speedDiff) * CurrentAccel, ForcePower) * Mathf.Sign(speedDiff);
 
+        //Decide what direction we're facing based on movement affecting us
         if (RB.velocity.x > 0.1f)
             FacingDirection = 1;
         if (RB.velocity.x < -0.1f)
             FacingDirection = -1;
 
+        //If we're grounded
         if(IsGrounded)
         {
+            //Refresh our amount of jumps
             JumpsLeft = MaxJumps;
+
+            //Determine whether we're moving in an opposing direction to our current velocity
             if (Mathf.Sign(RB.velocity.x) != Mathf.Sign(H_Axis) && H_Axis != 0)
                 IsSkidding = true;
             else
                 IsSkidding = false;
         }
 
+        //Dash burst is kinda broken so please fix this lol
         if (IsDashing && DashBurstSpent == false)
         {
             AddForces += (FacingDirection * Vector2.right) * DashBurstForce;
             DashBurstSpent = true;
         }
 
+        //Move our player with our input
         RB.AddForce(movement * Vector2.right);
+
+        //Additional forces acting on our player
         RB.AddForce(AddForces);
         AddForces = Vector3.zero;
 
+        //Set jumping to false if we aren't
         if (RB.velocity.y < 0)
             IsJumping = false;
     }

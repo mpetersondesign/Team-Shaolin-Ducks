@@ -6,8 +6,6 @@ public class AerialState : State
 {
     private PlayerController Player;
 
-
-
     protected override void OnStateInitialize()
     {
         Player = GetComponent<PlayerController>();
@@ -26,13 +24,32 @@ public class AerialState : State
 
     public override void Tick()
     {
-        if (Player.IsGrounded)
+        //If the player is falling and not currently slinging
+        if(Player.RB.velocity.y < 0 && !Player.IsSlinging)
         {
-            GetComponent<StateMachine>().ChangeState("Grounded");
+            //If we're sliding against a wall && the player is pressing against it
+            if((Player.PI.RawInput.x > 0 && Player.AgainstWall == 1) ||
+               (Player.PI.RawInput.x < 0 && Player.AgainstWall == -1))
+            {
+                //Placeholder animation (we don't want to be in our slung animation)
+                Player.PA.Play("Idle");
+
+                //Disable the sling if we were in one
+                Player.IsSlung = false;
+
+                //Slow the player's descent by half
+                Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.RB.velocity.y / 2);
+            }
         }
 
+        //If we become grounded while aerial
+        if (Player.IsGrounded)
+            Player.SM.ChangeState("Grounded"); //Switch to grounded
+
+        //If we press our dash key in the air and we haven't already slung ourselves
         if(Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash) && !Player.SlingshotSpent)
         {
+            //Start slinging
             Player.IsSlinging = true;
             Player.SM.ChangeState("Slinging");
         }
