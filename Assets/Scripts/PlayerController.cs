@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
 
         if (PI.IsPressed(PlayerInputs.PlayerAction.Dash))
             IsDashing = true;
+
         else
         {
             IsDashing = false;
