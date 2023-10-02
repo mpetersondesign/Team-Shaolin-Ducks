@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class GroundedState : State
 {
     private PlayerController Player;
@@ -28,18 +30,18 @@ public class GroundedState : State
 
     public override void Tick()
     {
-        /* Bounce mechanic (someone take a look at this pls :3 )
+        // Bounce mechanic (someone take a look at this pls :3 )
         if (Player.IsSlung && Player.RB.velocity.y > GetComponent<SlingingState>().BounceThreshold)
         {
             Player.IsSlung = false;
             var groundNormal = Physics2D.Raycast(transform.position, (Vector2)transform.position + Player.RB.velocity, 0.1f, Player.TerrainLayer).normal;
 
             //We want this to be a reflection of the normal being hit
-            Vector2 bounceDirection = (Vector2.up);
+            Vector2 bounceDirection = Math.Reflect(Player.RB.velocity, groundNormal);
             float bouncePower = (Mathf.Abs(Player.RB.velocity.y) * GetComponent<SlingingState>().BounceForce);
             Mathf.Clamp(bouncePower, 0, GetComponent<SlingingState>().MaxBounceForce);
             Player.RB.AddForce(bounceDirection * bouncePower, ForceMode2D.Impulse);
-        } */
+        }
 
         if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Jump))
         {
