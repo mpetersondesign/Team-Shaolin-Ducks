@@ -18215,9 +18215,7 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: 2c782818179cf8c478ebd6d372d98935, type: 3}
-      name: NormalMap
+    secondaryTextures: []
     nameFileIdTable:
       tilemap_packed_0: 335346857
       tilemap_packed_1: -756281970

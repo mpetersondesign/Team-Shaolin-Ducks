@@ -47,7 +47,7 @@ public class SlingingState : State
             Player.SlingshotSpent = true;
             Player.IsSlinging = false;
             Player.IsSlung = true;
-            BroadcastMessage("OnSling");
+            SendMessage("OnSling", targetDir);
         }
 
         if (Player.IsGrounded)
