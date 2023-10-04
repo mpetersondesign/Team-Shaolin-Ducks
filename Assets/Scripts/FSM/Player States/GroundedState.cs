@@ -17,7 +17,7 @@ public class GroundedState : State
         Player.SlingshotSpent = false;
         Player.IsSlinging = false;
         Player.PC.size = Player.DefaultColliderSize;
-        Player.PA.Play("Idle");
+        //Player.PA.Play("Idle");
         Player.IsSlung = false;
     }
 
@@ -48,11 +48,18 @@ public class GroundedState : State
         }
 
         if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))
+        {
+            if (Player.IsDashing == false)
+                Player.PA.Play("Walk");
             Player.IsDashing = true;
+        }
         else
         {
+            if (Player.IsDashing == true)
+                Player.PA.Play("Idle");
             Player.IsDashing = false;
             Player.DashBurstSpent = false;
         }
+
     }
 }

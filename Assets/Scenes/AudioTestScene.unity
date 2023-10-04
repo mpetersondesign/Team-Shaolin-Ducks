@@ -1451,7 +1451,7 @@ MonoBehaviour:
   audioCues:
   - {fileID: 11400000, guid: 85b737d891a706d46bda8f58ba5e5966, type: 2}
   audioConfigs:
-  - {fileID: 11400000, guid: 498ed413c8ab8b14a9ea247dd3165f0e, type: 2}
+  - {fileID: 11400000, guid: 893d8d384f7e723438fd63cce001f083, type: 2}
   audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1001 &1696846340
 PrefabInstance:
@@ -1979,6 +1979,7 @@ GameObject:
   - component: {fileID: 2025866492}
   - component: {fileID: 2025866491}
   - component: {fileID: 2025866490}
+  - component: {fileID: 2025866493}
   m_Layer: 2
   m_Name: Sprite
   m_TagString: Untagged
@@ -2048,7 +2049,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 310278334, guid: 2c782818179cf8c478ebd6d372d98935, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2067,13 +2068,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025866489}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
+  m_LocalScale: {x: 1.6, y: 1.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1636218667}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2025866493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025866489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 7273b202e9acc9c4eb9d2fc60dc1d8a0, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: 5ae014c001e58214597d7e45d63057fc, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &2060005779
 GameObject:
   m_ObjectHideFlags: 0
