@@ -36,7 +36,7 @@ public class PlayerEffectsActivator : MonoBehaviour
         if (speed > 14.5f)
         {
             float xNoise = (Mathf.PerlinNoise(transform.position.x, Time.time) - 0.5f) * 2.0f;
-            float yNoise = (Mathf.PerlinNoise(Time.time, transform.position.y) - 0.5f) * 2.0f;
+            float yNoise = (Mathf.PerlinNoise(Time.time, transform.position.y) - 0.5f);
             MainCamera.GetComponent<PlayerCamera>().ShakeOffset = new Vector2(xNoise, yNoise) * ShakeScale;
         }
         else

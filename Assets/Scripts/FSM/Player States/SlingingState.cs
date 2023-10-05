@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public class SlingingState : State
@@ -47,7 +48,10 @@ public class SlingingState : State
             Player.SlingshotSpent = true;
             Player.IsSlinging = false;
             Player.IsSlung = true;
-            SendMessage("OnSling", targetDir);
+            if(GetComponent<PlayerEffectsActivator>() != null)
+            {
+                SendMessage("OnSling", targetDir);
+            }
         }
 
         if (Player.IsGrounded)
