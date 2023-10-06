@@ -9,6 +9,7 @@ public class PlayerCamera : MonoBehaviour
     public float LerpAmount;
     private Vector2 DefaultOffset;
     public Vector2 Offset;
+    public Vector2 ShakeOffset;
     public float LookDownAmount;
     public float LookUpAmount;
 
@@ -39,7 +40,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void CameraMovement()
     {
-        Vector3 targetPos = Player.transform.position + (Vector3)Offset;
+        Vector3 targetPos = Player.transform.position + (Vector3)Offset + (Vector3)ShakeOffset;
         targetPos.z = -10;
         transform.position = Vector3.Lerp(transform.position, targetPos, LerpAmount);
     }
