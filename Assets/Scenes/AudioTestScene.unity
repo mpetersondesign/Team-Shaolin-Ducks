@@ -1143,6 +1143,7 @@ MonoBehaviour:
   Player: {fileID: 1636218666}
   LerpAmount: 0.05
   Offset: {x: 0, y: 1}
+  ShakeOffset: {x: 0, y: 0}
   LookDownAmount: 1.5
   LookUpAmount: 1.5
 --- !u!81 &1395297214
@@ -1395,18 +1396,19 @@ MonoBehaviour:
   NoClip: 0
   IsDashing: 0
   IsJumping: 0
-  JumpThisFrame: 0
   IsGrounded: 1
   IsSkidding: 0
-  SlingshotSpent: 0
   IsSlinging: 0
   IsSlung: 0
+  SlingshotSpent: 0
+  AgainstWall: 0
   DefaultColliderSize: {x: 0.75, y: 1.75}
   DefaultColliderOffset: {x: 0, y: 0}
   SlingshotColliderSize: {x: 0.75, y: 0.875}
   SlingshotColliderOffset: {x: 0, y: 0}
   SlidingColliderSize: {x: 0, y: 0}
   SlidingColliderOffset: {x: 0, y: 0}
+  WallDetectorLength: 0
   GroundCheckSize: {x: 0.75, y: 0.5}
   GroundCheckPos: {x: 0, y: -0.85}
   ExternalForces: {x: 0, y: 0}
@@ -1418,6 +1420,7 @@ MonoBehaviour:
   PI: {fileID: 1636218662}
   RB: {fileID: 1636218660}
   PA: {fileID: 2025866490}
+  PS: {fileID: 2025866489}
 --- !u!4 &1636218667
 Transform:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class AudioCueSO : ScriptableObject
         }
 
         lastPlayed = nextToPlay;
-        Debug.Log("Playing: " + nextToPlay);
+        //Debug.Log("Playing: " + nextToPlay);
         return audioClips[nextToPlay];
     }
 

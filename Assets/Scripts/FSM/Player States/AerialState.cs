@@ -43,7 +43,7 @@ public class AerialState : State
         }
 
         //If we become grounded while aerial
-        if (Player.IsGrounded)
+        if (Player.IsGrounded && !Player.IsJumping)
             Player.SM.ChangeState("Grounded"); //Switch to grounded
 
         //If we press our dash key in the air and we haven't already slung ourselves

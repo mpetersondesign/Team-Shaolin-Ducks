@@ -33,7 +33,7 @@ public class AudioCue : MonoBehaviour
         if (audioConfigs.Length != audioCues.Length)
         {
             disabled = true;
-            Debug.Log("AudioCue has conflicting numbers of AudioCueSO and AudioConfigurationSO. AudioCue has been disabled.");
+            //Debug.Log("AudioCue has conflicting numbers of AudioCueSO and AudioConfigurationSO. AudioCue has been disabled.");
             return;
         }
 
@@ -50,13 +50,13 @@ public class AudioCue : MonoBehaviour
 
         if (list.Count == 0)
         {
-            Debug.LogWarning("Play Audio Cue " + index + " has list count 0");
+            //Debug.LogWarning("Play Audio Cue " + index + " has list count 0");
             return;
         }    
         
         if (index >= audioCues.Length)
         {
-            Debug.LogWarning("Play Audio Cue " + index + " is out of range index");
+            //Debug.LogWarning("Play Audio Cue " + index + " is out of range index");
             return;
         }
         
@@ -73,13 +73,13 @@ public class AudioCue : MonoBehaviour
 
         if (list.Count == 0)
         {
-            Debug.LogWarning("Play Audio Cue " + index + " has list count 0");
+            //Debug.LogWarning("Play Audio Cue " + index + " has list count 0");
             return;
         }
 
         if (index >= audioCues.Length)
         {
-            Debug.LogWarning("Play Audio Cue " + index + " is out of range index");
+            //Debug.LogWarning("Play Audio Cue " + index + " is out of range index");
             return;
         }
 
@@ -95,13 +95,13 @@ public class AudioCue : MonoBehaviour
 
         if (list.Count == 0)
         {
-            Debug.LogWarning("Play Audio Cue " + index + " has list count 0");
+            //Debug.LogWarning("Play Audio Cue " + index + " has list count 0");
             return;
         }
 
         if (index >= audioCues.Length)
         {
-            Debug.LogWarning("Play Audio Cue " + index + " is out of range index");
+            //Debug.LogWarning("Play Audio Cue " + index + " is out of range index");
             return;
         }
 

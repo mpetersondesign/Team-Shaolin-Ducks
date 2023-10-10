@@ -69,11 +69,11 @@ public class AudioManager : MonoBehaviour
         if ((emitter = GetEmitter()) != null)
         {
             emitter.PlayAudioCue(audioCue.GetClip(restart), audioConfig, audioCue.isLooping, position);
-            Debug.Log("playing audio cue");
+            //Debug.Log("playing audio cue");
         }
         else
         {
-            Debug.Log("No emitter available for audio cue");
+            //Debug.Log("No emitter available for audio cue");
         }
     }
 
@@ -166,7 +166,7 @@ public class AudioManager : MonoBehaviour
                 if (e.isMusic && e.GetComponent<AudioSource>().volume > 0)
                     stillPlaying = true;
             }
-            Debug.Log("sp: " + stillPlaying);
+            //Debug.Log("sp: " + stillPlaying);
             yield return null;
         }
         yield break;
