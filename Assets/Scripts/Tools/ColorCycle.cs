@@ -17,7 +17,9 @@ public class ColorCycle : MonoBehaviour
     }
 
     public colorCycles currentCycle;
-    
+    public float cycleIncrements = 0.01f;
+    public float cycleMax = 1f;
+    public float cycleMin = .5f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,50 +34,50 @@ public class ColorCycle : MonoBehaviour
         switch (currentCycle)
         {
             case colorCycles.greenUp:
-                cycleColor.g += .01f;
-                if (cycleColor.g >= 1)
+                cycleColor.g += cycleIncrements;
+                if (cycleColor.g >= cycleMax)
                 {
-                    cycleColor.g = 1;
+                    cycleColor.g = cycleMax;
                     currentCycle = colorCycles.redDown;
                 }
                 break;
             case colorCycles.redDown:
-                cycleColor.r -= .01f;
-                if (cycleColor.r <= .5f)
+                cycleColor.r -= cycleIncrements;
+                if (cycleColor.r <= cycleMin)
                 {
-                    cycleColor.r = .5f;
+                    cycleColor.r = cycleMin;
                     currentCycle = colorCycles.blueUp;
                 }
                 break;
             case colorCycles.blueUp:
-                cycleColor.b += .01f;
-                if (cycleColor.b >= 1f)
+                cycleColor.b += cycleIncrements;
+                if (cycleColor.b >= cycleMax)
                 {
-                    cycleColor.b = 1f;
+                    cycleColor.b = cycleMax;
                     currentCycle = colorCycles.greenDown;
                 }
                 break;
             case colorCycles.greenDown:
-                cycleColor.g -= .01f;
-                if (cycleColor.g <= .5f)
+                cycleColor.g -= cycleIncrements;
+                if (cycleColor.g <= cycleMin)
                 {
-                    cycleColor.g = .5f;
+                    cycleColor.g = cycleMin;
                     currentCycle = colorCycles.redUp;
                 }
                 break;
             case colorCycles.redUp:
-                cycleColor.r += .01f;
-                if (cycleColor.r >= 1f)
+                cycleColor.r += cycleIncrements;
+                if (cycleColor.r >= cycleMax)
                 {
-                    cycleColor.r = 1f;
+                    cycleColor.r = cycleMax;
                     currentCycle = colorCycles.blueDown;
                 }
                 break;
             case colorCycles.blueDown:
-                cycleColor.b -= .01f;
-                if (cycleColor.b <= .5f)
+                cycleColor.b -= cycleIncrements;
+                if (cycleColor.b <= cycleMin)
                 {
-                    cycleColor.b = .5f;
+                    cycleColor.b = cycleMin;
                     currentCycle = colorCycles.greenUp;
                 }
                 break;

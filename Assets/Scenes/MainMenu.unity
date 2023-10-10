@@ -1655,6 +1655,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cycleColor: {r: 0, g: 0, b: 0, a: 0}
   currentCycle: 0
+  cycleIncrements: 0.001
+  cycleMax: 0.75
+  cycleMin: 0.25
 --- !u!1 &2088750016
 GameObject:
   m_ObjectHideFlags: 0
