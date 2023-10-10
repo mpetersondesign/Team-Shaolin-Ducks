@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public class SlingingState : State
@@ -46,10 +47,15 @@ public class SlingingState : State
 
             Player.RB.velocity = Vector2.zero;
             Time.timeScale = 1f;
+            Player.RB.angularVelocity = 0;
             Player.RB.AddForce((Vector2)SlingIndicator.transform.up.normalized * LaunchPower, ForceMode2D.Impulse);
             Player.SlingshotSpent = true;
             Player.IsSlinging = false;
             Player.IsSlung = true;
+            if(GetComponent<PlayerEffectsActivator>() != null)
+            {
+                SendMessage("OnSling", targetDir);
+            }
         }
 
         if (Player.IsGrounded)

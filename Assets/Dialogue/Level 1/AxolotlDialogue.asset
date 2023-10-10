@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speaker: {fileID: 11400000, guid: 9d1f8ab3050557d45b0cb050698b6f3b, type: 2}
   Lines:
-  - Hello, I am an axolotl!
-  - How are you today?
+  - Text: Hi, I'm Terrance.
+  - Text: I'm an axolotl.
