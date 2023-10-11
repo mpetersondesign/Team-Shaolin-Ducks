@@ -84,7 +84,8 @@ public class PlayerController : MonoBehaviour
     public PlayerInputs PI;
     public Rigidbody2D RB;
     public Animator PA;
-    public GameObject PS;
+    public GameObject PSP; //PlayerSprite Parent
+    public GameObject PS; //PlayerSprite
 
     void Awake()
     {
@@ -105,7 +106,8 @@ public class PlayerController : MonoBehaviour
     {
         PA.SetFloat("Movement", Mathf.Abs(Input.GetAxisRaw(PI.H_AxisName)));
 
-        PS.transform.localScale = new Vector3(PI.RawInput.x, PS.transform.localScale.y, PS.transform.localScale.z);
+        if(PI.RawInput.x != 0)
+            PSP.transform.localScale = new Vector3(PI.RawInput.x, PSP.transform.localScale.y, PSP.transform.localScale.z);
 
         //Ground/Wall Detection
         GroundedCheck();

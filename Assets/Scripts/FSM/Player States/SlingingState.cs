@@ -43,7 +43,8 @@ public class SlingingState : State
         if(Input.GetMouseButtonDown(0))
         {
             // temp location?
-            GetComponent<AudioCue>().PlayAudioCue();
+            if(GetComponent<AudioCue>() != null)
+                GetComponent<AudioCue>().PlayAudioCue();
 
             Player.RB.velocity = Vector2.zero;
             Time.timeScale = 1f;
