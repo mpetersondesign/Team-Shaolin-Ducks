@@ -521,6 +521,8 @@ GameObject:
   - component: {fileID: 687948007042493401}
   - component: {fileID: 687948007042493406}
   - component: {fileID: 687948007042493393}
+  - component: {fileID: 8208065888056883356}
+  - component: {fileID: 8259757892592154684}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -727,6 +729,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 1.75}
   m_EdgeRadius: 0.1
+--- !u!114 &8208065888056883356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687948007042493392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 85b737d891a706d46bda8f58ba5e5966, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: 893d8d384f7e723438fd63cce001f083, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
+--- !u!114 &8259757892592154684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687948007042493392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75357e186c04da44a923c36efd9bbeed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlingEffect: {fileID: 4345542824123552740, guid: 0cbcc691122106e418dcbb3aeff24f31, type: 3}
+  ForegroundShader: {fileID: 2100000, guid: 968e0eae2aa853c40a3fdb8b7b6051cb, type: 2}
+  MainCamera: {fileID: 0}
+  ShakeScale: 0.7
 --- !u!1 &687948007082096345
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +942,7 @@ GameObject:
   - component: {fileID: 687948007403196602}
   - component: {fileID: 687948007403196603}
   - component: {fileID: 687948007403196600}
+  - component: {fileID: 8720738474688046710}
   m_Layer: 2
   m_Name: Sprite
   m_TagString: Untagged
@@ -1001,6 +1038,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8720738474688046710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687948007403196605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 7273b202e9acc9c4eb9d2fc60dc1d8a0, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: 5ae014c001e58214597d7e45d63057fc, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &687948007528520981
 GameObject:
   m_ObjectHideFlags: 0
