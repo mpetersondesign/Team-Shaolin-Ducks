@@ -539,10 +539,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f32192f283689044a2688ffe4bb76aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 6742118356012590841}
   characterPortrait: {fileID: 6742118355568207136}
   characterNameDisplay: {fileID: 6742118354679503776}
   dialogueDisplay: {fileID: 6742118354753410574}
-  advanceKey: 32
 --- !u!1 &6742118355568207150
 GameObject:
   m_ObjectHideFlags: 0
