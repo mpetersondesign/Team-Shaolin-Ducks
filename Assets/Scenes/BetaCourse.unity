@@ -5729,6 +5729,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 73846224359854856, guid: 8642a29d9c70f9b4996777cdcb2a9c97, type: 3}
+      propertyPath: LerpAmount
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 73846224359854857, guid: 8642a29d9c70f9b4996777cdcb2a9c97, type: 3}
       propertyPath: m_RootOrder
       value: 0
