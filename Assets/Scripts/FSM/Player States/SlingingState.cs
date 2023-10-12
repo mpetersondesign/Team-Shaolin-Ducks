@@ -42,8 +42,12 @@ public class SlingingState : State
 
         if(Input.GetMouseButtonDown(0))
         {
+            // temp location?
+            if(GetComponent<AudioCue>() != null)
+                GetComponent<AudioCue>().PlayAudioCue();
+
+            Player.RB.velocity = Vector2.zero;
             Time.timeScale = 1f;
-            Player.RB.velocity = Vector3.zero;
             Player.RB.angularVelocity = 0;
             Player.RB.AddForce((Vector2)SlingIndicator.transform.up.normalized * LaunchPower, ForceMode2D.Impulse);
             Player.SlingshotSpent = true;

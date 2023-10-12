@@ -84,6 +84,8 @@ public class PlayerController : MonoBehaviour
     public PlayerInputs PI;
     public Rigidbody2D RB;
     public Animator PA;
+    public GameObject PSP; //PlayerSprite Parent
+    public GameObject PS; //PlayerSprite
 
     void Awake()
     {
@@ -102,6 +104,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (CanMove)
+            PA.SetFloat("Movement", Mathf.Abs(Input.GetAxisRaw(PI.H_AxisName)));
+        else
+            PA.SetFloat("Movement", 0);
+
+        if (PI.RawInput.x != 0)
+            PSP.transform.localScale = new Vector3(PI.RawInput.x, PSP.transform.localScale.y, PSP.transform.localScale.z);
+
         //Ground/Wall Detection
         GroundedCheck();
         WallDetection();
@@ -129,14 +139,10 @@ public class PlayerController : MonoBehaviour
 
     private void StateManagement()
     {
-        //If we're grounded and not jumping up
-        if (IsGrounded && !IsJumping)
-            SM.ChangeState("Grounded"); //Our state should be grounded
-
         //If we've pressed dash
         if (PI.IsPressed(PlayerInputs.PlayerAction.Dash))
-            IsDashing = true; //Start dashing
-        else //Otherwise
+            IsDashing = true;
+        else
         {
             //We're not dashing
             IsDashing = false;
@@ -159,7 +165,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        MovePlayer();
+        if(CanMove)
+            MovePlayer();
     }
 
     private void MovePlayer()

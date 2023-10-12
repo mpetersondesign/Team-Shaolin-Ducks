@@ -29,13 +29,18 @@ public class PlayerCamera : MonoBehaviour
 
     private void GetInputs()
     {
-        var v_axis = Input.GetAxis("Vertical");
-        if (v_axis == -1)
-            Offset.y = DefaultOffset.y - LookDownAmount;
-        else if (v_axis == 1)
-            Offset.y = DefaultOffset.y + LookUpAmount;
-        else
-            Offset.y = DefaultOffset.y;
+        Offset = Vector2.ClampMagnitude(Player.RB.velocity, 1) * 2f;
+
+        if (Player.IsGrounded)
+        {
+            var v_axis = Input.GetAxis("Vertical");
+            if (v_axis == -1)
+                Offset.y = DefaultOffset.y - LookDownAmount;
+            else if (v_axis == 1)
+                Offset.y = DefaultOffset.y + LookUpAmount;
+            else
+                Offset.y = DefaultOffset.y;
+        }
     }
 
     private void CameraMovement()

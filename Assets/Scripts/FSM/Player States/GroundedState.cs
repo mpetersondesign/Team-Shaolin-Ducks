@@ -17,7 +17,7 @@ public class GroundedState : State
         Player.SlingshotSpent = false;
         Player.IsSlinging = false;
         Player.PC.size = Player.DefaultColliderSize;
-        Player.PA.Play("Idle");
+        Player.PA.Play("Grounded");
         Player.IsSlung = false;
     }
 
@@ -40,7 +40,7 @@ public class GroundedState : State
             Mathf.Clamp(bouncePower, 0, GetComponent<SlingingState>().MaxBounceForce);
             Player.RB.AddForce(bounceDirection * bouncePower, ForceMode2D.Impulse);
         } */
-
+        
         if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Jump))
         {
             Player.IsJumping = true;
@@ -48,11 +48,14 @@ public class GroundedState : State
         }
 
         if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))
+        {
             Player.IsDashing = true;
+        }
         else
         {
             Player.IsDashing = false;
             Player.DashBurstSpent = false;
         }
+
     }
 }
