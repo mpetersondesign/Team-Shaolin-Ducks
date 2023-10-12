@@ -104,9 +104,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        PA.SetFloat("Movement", Mathf.Abs(Input.GetAxisRaw(PI.H_AxisName)));
+        if (CanMove)
+            PA.SetFloat("Movement", Mathf.Abs(Input.GetAxisRaw(PI.H_AxisName)));
+        else
+            PA.SetFloat("Movement", 0);
 
-        if(PI.RawInput.x != 0)
+        if (PI.RawInput.x != 0)
             PSP.transform.localScale = new Vector3(PI.RawInput.x, PSP.transform.localScale.y, PSP.transform.localScale.z);
 
         //Ground/Wall Detection
@@ -162,7 +165,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        MovePlayer();
+        if(CanMove)
+            MovePlayer();
     }
 
     private void MovePlayer()

@@ -5798,6 +5798,10 @@ PrefabInstance:
       propertyPath: PSP
       value: 
       objectReference: {fileID: 687948007194175591}
+    - target: {fileID: 687948007042493404, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
+      propertyPath: CanMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 687948007042493405, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
       propertyPath: m_RootOrder
       value: 2
