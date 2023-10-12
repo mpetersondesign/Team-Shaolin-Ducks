@@ -12,7 +12,7 @@ public class PlayerEffectsActivator : MonoBehaviour
     public float ShakeScale;
 
     private ParticleSystem wallSlideParticles;
-
+    private bool wallSlideActive = false;
     private void Awake()
     {
         wallSlideParticles = WallSlideEffect.GetComponent<ParticleSystem>();
@@ -55,15 +55,23 @@ public class PlayerEffectsActivator : MonoBehaviour
 
     public void StartWallSlideEffects(int direction)
     {
-        ParticleSystem.ShapeModule shape = wallSlideParticles.shape;
-        shape.position = new Vector3(direction * 0.5f, 0.0f);
-        ParticleSystem.EmissionModule emission = wallSlideParticles.emission;
-        emission.enabled = true;
+        if (!wallSlideActive)
+        {
+            ParticleSystem.ShapeModule shape = wallSlideParticles.shape;
+            shape.position = new Vector3(direction * 0.5f, 0.0f);
+            ParticleSystem.EmissionModule emission = wallSlideParticles.emission;
+            emission.enabled = true;
+            ParticleSystem.RotationBySpeedModule rotation = wallSlideParticles.rotationBySpeed;
+            rotation.zMultiplier = direction;
+
+            wallSlideActive = true;
+        }
     }
 
     public void StopWallSlideEffects()
     {
         ParticleSystem.EmissionModule emission = wallSlideParticles.emission;
         emission.enabled = false;
+        wallSlideActive = false;
     }
 }
