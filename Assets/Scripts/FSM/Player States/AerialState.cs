@@ -24,6 +24,8 @@ public class AerialState : State
 
     public override void Tick()
     {
+        //Debug.Log(Player.RB.isKinematic);
+
         //If the player is falling and not currently slinging
         if(Player.RB.velocity.y < 0 && !Player.IsSlinging)
         {
@@ -31,6 +33,13 @@ public class AerialState : State
             if((Player.PI.RawInput.x > 0 && Player.AgainstWall == 1) ||
                (Player.PI.RawInput.x < 0 && Player.AgainstWall == -1))
             {
+                //Right now interact button doubles as grab button (can be changed later)
+                if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Interact))
+                {
+                    Player.SM.ChangeState("WallGrabing");
+                    return;
+                }
+
                 //Placeholder animation (we don't want to be in our slung animation)
                 Player.PA.Play("Idle");
 
@@ -46,8 +55,13 @@ public class AerialState : State
         if (Player.IsGrounded)
             Player.SM.ChangeState("Grounded"); //Switch to grounded
 
+        if (Player.PI.OnPress(PlayerInputs.PlayerAction.Jump))
+        {
+            Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength / 2);
+        }
+
         //If we press our dash key in the air and we haven't already slung ourselves
-        if(Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash) && !Player.SlingshotSpent)
+        if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash) && !Player.SlingshotSpent)
         {
             //Start slinging
             Player.IsSlinging = true;

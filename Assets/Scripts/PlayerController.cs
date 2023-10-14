@@ -74,10 +74,12 @@ public class PlayerController : MonoBehaviour
     [Header("Ground Check Modifications")]
     public Vector2 GroundCheckSize;
     public Vector2 GroundCheckPos;
+    public float GroundVelocityThreashold = 0.01f;
 
     public Vector2 ExternalForces;
 
     public LayerMask TerrainLayer;
+
 
     public BoxCollider2D PC;
     public StateMachine SM;
@@ -129,9 +131,11 @@ public class PlayerController : MonoBehaviour
 
     private void StateManagement()
     {
+        // Fallowing code was moved to GroundedState
+        //
         //If we're grounded and not jumping up
-        if (IsGrounded && !IsJumping)
-            SM.ChangeState("Grounded"); //Our state should be grounded
+        //if (IsGrounded && !IsJumping)
+        //    SM.ChangeState("Grounded"); //Our state should be grounded
 
         //If we've pressed dash
         if (PI.IsPressed(PlayerInputs.PlayerAction.Dash))
@@ -145,16 +149,20 @@ public class PlayerController : MonoBehaviour
             DashBurstSpent = false;
         }
 
+        //Moved fallowing code to grounded state
+        //
         //If we're not slinging, and we're not on the ground
-        if(!IsSlinging && !IsGrounded)
-            SM.ChangeState("Aerial"); //Switch to aerial
+        //if(!IsSlinging && !IsGrounded)
+        //    SM.ChangeState("Aerial"); //Switch to aerial
     }
 
     private void GroundedCheck()
     {
         //Set our grounded bool to be the result of this boxcast per-frame
-        IsGrounded = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
-                                       GroundCheckSize, 0, Vector3.down, 0.1f);
+        //Ignore check if we have a non-negligable upwords velocity
+        if(RB.velocity.y <= GroundVelocityThreashold)
+            IsGrounded = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
+                                           GroundCheckSize, 0, Vector3.down, 0.1f);
     }
 
     void FixedUpdate()

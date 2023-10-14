@@ -12,7 +12,7 @@ public class StateMachine : MonoBehaviour
     public List<string> AddedStateNames = new List<string>();
 
     //Define the current state we're in
-    public State CurrentState;
+    public State CurrentState = null;
 
     private void Start()
     {
@@ -48,7 +48,8 @@ public class StateMachine : MonoBehaviour
         State nextState = States[key];
 
         //Run exit function on our current state
-        CurrentState.Exit(key, nextState);
+        //? acts as a null check, meaning if CurrentState isnt null, Exit CurrentState
+        CurrentState?.Exit(key, nextState);
 
         //Run enter function on our next state
         nextState.Enter(CurrentState.Key, CurrentState);

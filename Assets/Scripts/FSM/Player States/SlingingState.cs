@@ -15,7 +15,7 @@ public class SlingingState : State
     protected override void OnStateInitialize()
     {
         Player = GetComponent<PlayerController>();
-        Machine.SetCurrentState(Key);
+        //Machine.SetCurrentState(Key);
     }
 
     public override void Enter(string previous_key, State previous_state)
@@ -52,8 +52,30 @@ public class SlingingState : State
 
         if (Player.IsGrounded)
         {
-            GetComponent<StateMachine>().ChangeState("Grounded");
-            Player.IsSlinging = false;
+            // Bounce mechanic
+            if (-Player.RB.velocity.y > GetComponent<SlingingState>().BounceThreshold)
+            {
+                Player.IsSlung = false;
+
+                // for some reason this doesn't work (is returning (0,0) so for a temporary solution we will assume a level ground i.e. normal = (0,1)
+                //var groundNormal = Physics2D.Raycast(transform.position, (Vector2)transform.position + Player.RB.velocity, 0.1f, Player.TerrainLayer).normal;
+                var groundNormal = new Vector2(0, 1);
+
+                //We want this to be a reflection of the normal being hit
+                Vector2 bounceDirection = Math.Reflect(Player.RB.velocity, groundNormal);
+                bounceDirection.Normalize();
+                float bouncePower = Mathf.Abs(Player.RB.velocity.y);
+                Mathf.Clamp(bouncePower, 0, GetComponent<SlingingState>().MaxBounceForce);
+                Player.RB.velocity = bounceDirection * bouncePower;
+
+                Player.IsGrounded = false;
+                GetComponent<StateMachine>().ChangeState("Aerial");
+            }
+            else
+            {
+                GetComponent<StateMachine>().ChangeState("Grounded");
+                Player.IsSlinging = false;
+            }
         }
 
         if (!Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))
