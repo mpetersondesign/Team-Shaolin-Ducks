@@ -59,13 +59,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _MaskEdgeWidth: 8
-    - _MaskSize: 4
+    - _MaskEdgeWidth: 1
+    - _MaskSize: 2.4001226
     m_Colors:
     - _AmbientColor: {r: 0.1, g: 0.1, b: 0.1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _MaskPosition: {r: 0, g: 0, b: 0, a: 0}
-    - _PlayerPos: {r: 0.00004574258, g: -3.0099852, b: 0, a: 0}
+    - _PlayerPos: {r: 13.9576, g: 8.578839, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
