@@ -16,7 +16,7 @@ public class AerialState : State
 
     public override void Enter(string previous_key, State previous_state)
     {
-
+        Player.IsJumping = true;
     }
 
     public override void Exit(string next_key, State next_state)

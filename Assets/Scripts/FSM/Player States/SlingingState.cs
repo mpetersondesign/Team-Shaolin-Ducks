@@ -31,6 +31,10 @@ public class SlingingState : State
     {
         Time.timeScale = 1f;
         SlingIndicator.gameObject.SetActive(false);
+
+        Player.SlingshotSpent = false;
+        Player.IsSlinging = false;
+        Player.IsSlung = false;
     }
 
     public override void Tick()
