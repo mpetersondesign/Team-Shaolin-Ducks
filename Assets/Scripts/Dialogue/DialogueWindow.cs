@@ -44,7 +44,8 @@ public class DialogueWindow : MonoBehaviour
             return;
         }
         dialoguePanel.SetActive(true);
-
+        FindObjectOfType<PlayerController>().RB.velocity = Vector2.zero;
+        FindObjectOfType<PlayerController>().CanMove = false;
         currentDialogue = data;
         currentLine = 0;
         UpdateText();
@@ -70,6 +71,7 @@ public class DialogueWindow : MonoBehaviour
             {
                 currentLine = 0;
                 dialoguePanel.SetActive(false);
+                FindObjectOfType<PlayerController>().CanMove = true;
                 // Let Player Move Again
             }
         }

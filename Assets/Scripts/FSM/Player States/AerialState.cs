@@ -5,10 +5,12 @@ using UnityEngine;
 public class AerialState : State
 {
     private PlayerController Player;
+    private PlayerEffectsActivator Effects;
 
     protected override void OnStateInitialize()
     {
         Player = GetComponent<PlayerController>();
+        Effects = GetComponent<PlayerEffectsActivator>();
         Machine.SetCurrentState(Key);
     }
 
@@ -19,7 +21,14 @@ public class AerialState : State
 
     public override void Exit(string next_key, State next_state)
     {
-
+        if(next_state != this)
+        {
+            // to avoid conditions where wall slide check is skipped due to slinging or grounding
+            if (Effects != null)
+            {
+                Effects.StopWallSlideEffects();
+            }
+        }
     }
 
     public override void Tick()
@@ -48,11 +57,20 @@ public class AerialState : State
 
                 //Slow the player's descent by half
                 Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.RB.velocity.y / 2);
+
+                if (Effects != null)
+                {
+                    Effects.StartWallSlideEffects(Player.AgainstWall);
+                }
+            }
+            else if(Effects != null)
+            {
+                Effects.StopWallSlideEffects();
             }
         }
 
         //If we become grounded while aerial
-        if (Player.IsGrounded)
+        if (Player.IsGrounded && !Player.IsJumping)
             Player.SM.ChangeState("Grounded"); //Switch to grounded
 
         if (Player.PI.OnPress(PlayerInputs.PlayerAction.Jump))
