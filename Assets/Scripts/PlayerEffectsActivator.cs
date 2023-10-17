@@ -84,6 +84,7 @@ public class PlayerEffectsActivator : MonoBehaviour
     {
         if (collision.tag == "ForegroundTrigger")
         {
+            StopCoroutine("RetractForegroundView");
             StartCoroutine("ExpandForegroundView");
         }
     }
@@ -92,13 +93,13 @@ public class PlayerEffectsActivator : MonoBehaviour
     {
         if (collision.tag == "ForegroundTrigger")
         {
+            StopCoroutine("ExpandForegroundView");
             StartCoroutine("RetractForegroundView");
         }
     }
 
     private IEnumerator ExpandForegroundView()
     {
-        StopCoroutine("RetractForegroundView");
         while (foregroundUnscaledInterp <= ForegroundExpansionTime)
         {
             float interp = foregroundUnscaledInterp / ForegroundExpansionTime;
@@ -110,7 +111,6 @@ public class PlayerEffectsActivator : MonoBehaviour
 
     private IEnumerator RetractForegroundView()
     {
-        StopCoroutine("ExpandForegroundView");
         while (foregroundUnscaledInterp >= 0.0f)
         {
             float interp = foregroundUnscaledInterp / ForegroundExpansionTime;
