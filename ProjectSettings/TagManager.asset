@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - AudioManager
+  - ForegroundTrigger
   layers:
   - Default
   - TransparentFX
