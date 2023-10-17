@@ -25,6 +25,8 @@ public class SlingingState : State
         Time.timeScale = SlowPercent;
         SlingIndicator.gameObject.SetActive(true);
         Player.PA.Play("Slung");
+
+        Player.IsSlinging = true;
     }
 
     public override void Exit(string next_key, State next_state)

@@ -7,6 +7,8 @@ public class AerialState : State
     private PlayerController Player;
     private PlayerEffectsActivator Effects;
 
+    private bool hasDoubleJump = true;
+
     protected override void OnStateInitialize()
     {
         Player = GetComponent<PlayerController>();
@@ -17,6 +19,8 @@ public class AerialState : State
     public override void Enter(string previous_key, State previous_state)
     {
         Player.IsJumping = true;
+        Player.IsGrounded = false;
+        hasDoubleJump = true;
     }
 
     public override void Exit(string next_key, State next_state)
@@ -73,16 +77,24 @@ public class AerialState : State
         if (Player.IsGrounded && !Player.IsJumping)
             Player.SM.ChangeState("Grounded"); //Switch to grounded
 
-        if (Player.PI.OnPress(PlayerInputs.PlayerAction.Jump))
+        if (hasDoubleJump && Player.PI.OnPress(PlayerInputs.PlayerAction.Jump))
         {
             Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength / 2);
+            hasDoubleJump = false;
+        }
+
+        if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))
+        {
+            Debug.Log("Test");
         }
 
         //If we press our dash key in the air and we haven't already slung ourselves
         if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash) && !Player.SlingshotSpent)
         {
             //Start slinging
-            Player.IsSlinging = true;
+
+            //Moved to Slinging (on Enter)
+            //Player.IsSlinging = true;
             Player.SM.ChangeState("Slinging");
         }
     }

@@ -5851,3 +5851,21 @@ PrefabInstance:
       objectReference: {fileID: 449051946}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
+--- !u!1 &687948007194175591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 687948007042493392, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
+  m_PrefabInstance: {fileID: 687948007194175590}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &687948007194175592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687948007194175591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beab5efb6deb66c489b7e0a97d53ee5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Key: WallGrabing

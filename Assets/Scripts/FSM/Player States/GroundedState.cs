@@ -50,9 +50,13 @@ public class GroundedState : State
             //Player.IsJumping = true;
 
             Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength);
+            Player.SM.ChangeState("Aerial");
         }
 
-        if (!Player.IsGrounded && !Player.IsSlinging)
+        //Correct me if I'm wrong but shouldn't IsSlining only be true when we are in SlingingState?
+        //Why would we need to check as we are in GroundedState?
+        //if (!Player.IsGrounded && !Player.IsSlinging)
+        if (!Player.IsGrounded)
         {
             Player.SM.ChangeState("Aerial");
         }
