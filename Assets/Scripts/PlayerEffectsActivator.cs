@@ -10,11 +10,16 @@ public class PlayerEffectsActivator : MonoBehaviour
     public Material ForegroundShader;
     public Camera MainCamera;
     public float ShakeScale;
+    public float ForegroundMaskSize;
+    public float ForegroundExpansionTime;
 
     private ParticleSystem wallSlideParticles;
     private bool wallSlideActive = false;
+    private float foregroundUnscaledInterp = 0.0f;
+
     private void Awake()
     {
+        ForegroundShader.SetFloat("_MaskSize", 0.0f);
         wallSlideParticles = WallSlideEffect.GetComponent<ParticleSystem>();
     }
 
@@ -73,5 +78,45 @@ public class PlayerEffectsActivator : MonoBehaviour
         ParticleSystem.EmissionModule emission = wallSlideParticles.emission;
         emission.enabled = false;
         wallSlideActive = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "ForegroundTrigger")
+        {
+            StopCoroutine("RetractForegroundView");
+            StartCoroutine("ExpandForegroundView");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "ForegroundTrigger")
+        {
+            StopCoroutine("ExpandForegroundView");
+            StartCoroutine("RetractForegroundView");
+        }
+    }
+
+    private IEnumerator ExpandForegroundView()
+    {
+        while (foregroundUnscaledInterp <= ForegroundExpansionTime)
+        {
+            float interp = foregroundUnscaledInterp / ForegroundExpansionTime;
+            ForegroundShader.SetFloat("_MaskSize", Mathf.Lerp(0.0f, ForegroundMaskSize, interp));
+            foregroundUnscaledInterp += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    private IEnumerator RetractForegroundView()
+    {
+        while (foregroundUnscaledInterp >= 0.0f)
+        {
+            float interp = foregroundUnscaledInterp / ForegroundExpansionTime;
+            ForegroundShader.SetFloat("_MaskSize", Mathf.Lerp(0.0f, ForegroundMaskSize, interp));
+            foregroundUnscaledInterp -= Time.deltaTime;
+            yield return null;
+        }
     }
 }

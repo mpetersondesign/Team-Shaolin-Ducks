@@ -18215,7 +18215,11 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: def325c6399be5e49abe9509b2b8a903, type: 3}
+      name: _MaskTex
+    - texture: {fileID: 2800000, guid: 9b957a0e35c856e44abe0198d5114fe0, type: 3}
+      name: _NormalMap
     nameFileIdTable:
       tilemap_packed_0: 335346857
       tilemap_packed_1: -756281970
