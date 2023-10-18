@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
     public Animator PA;
     public GameObject PSP; //PlayerSprite Parent
     public GameObject PS; //PlayerSprite
+    public ParticleSystem SlingshotAfterimage;
 
     void Awake()
     {
@@ -120,8 +121,17 @@ public class PlayerController : MonoBehaviour
         //Manage our states per-frame if needed
         StateManagement();
 
+        //Manage some particle stuff (Will move later)
+        ManageParticles();
+
         //Update our inspector readout for velocity
         CurrentVelocity = RB.velocity;
+    }
+
+    private void ManageParticles()
+    {
+        var ssa = SlingshotAfterimage.emission;
+        ssa.enabled = (IsSlinging || IsSlung);
     }
 
     private void WallDetection()

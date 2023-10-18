@@ -41117,6 +41117,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 687948007042493404, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
+      propertyPath: SlingshotAfterimage
+      value: 
+      objectReference: {fileID: 1278547900}
     - target: {fileID: 687948007042493405, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
       propertyPath: m_RootOrder
       value: 2
