@@ -15,8 +15,8 @@ MonoBehaviour:
   mixerGroup: {fileID: 4610017029084775685, guid: 0b3dbce151dfb7a43bdd34b28aac8ad7, type: 2}
   volume: 0.495
   pitch: 1
-  enablePitchVariation: 0
-  pitchVariation: 0
+  enablePitchVariation: 1
+  pitchVariation: 0.2
   spatialBlend: 0
   rolloff: 0
   rolloffMin: 1
