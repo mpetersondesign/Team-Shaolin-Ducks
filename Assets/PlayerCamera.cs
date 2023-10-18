@@ -24,9 +24,12 @@ public class PlayerCamera : MonoBehaviour
     void Update()
     {
         GetInputs();
-        CameraMovement();
     }
 
+    private void FixedUpdate()
+    {
+        CameraMovement();
+    }
     private void GetInputs()
     {
         Offset = Vector2.ClampMagnitude(Player.RB.velocity, 1) * 2f;

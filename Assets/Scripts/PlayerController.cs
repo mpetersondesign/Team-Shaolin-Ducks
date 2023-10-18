@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
     public bool IsSlinging;
     public bool IsSlung;
     public bool SlingshotSpent;
+    public bool IsWallSliding;
     public int AgainstWall = 0;
 
     [Header("Collider Modifications")]
