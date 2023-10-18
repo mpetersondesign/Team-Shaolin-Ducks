@@ -40,9 +40,11 @@ public class AerialState : State
             if((Player.PI.RawInput.x > 0 && Player.AgainstWall == 1) ||
                (Player.PI.RawInput.x < 0 && Player.AgainstWall == -1))
             {
-                //Placeholder animation (we don't want to be in our slung animation)
-                Player.PA.Play("Idle");
+                Player.IsWallSliding = true;
 
+                //Placeholder animation (we don't want to be in our slung animation)
+                Player.PA.Play("Wall Slide");
+                
                 //Disable the sling if we were in one
                 Player.IsSlung = false;
 
@@ -54,10 +56,17 @@ public class AerialState : State
                     Effects.StartWallSlideEffects(Player.AgainstWall);
                 }
             }
-            else if(Effects != null)
+            else
             {
                 Effects.StopWallSlideEffects();
+                Player.IsWallSliding = false;
             }
+        }
+
+        if (!Player.IsWallSliding && !Player.IsSlinging && !Player.IsSlung)
+        {
+            Player.PA.Play("Aerial");
+            Player.PA.SetFloat("YVel", Player.RB.velocity.y);
         }
 
         //If we become grounded while aerial

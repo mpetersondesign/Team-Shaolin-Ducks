@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &255883473 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 687948007042493404, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
+  m_PrefabInstance: {fileID: 1803250572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c3403098350514f8fb1310435ae322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &448581346
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,6 +943,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 73846224359854856, guid: 8642a29d9c70f9b4996777cdcb2a9c97, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 255883473}
+    - target: {fileID: 73846224359854856, guid: 8642a29d9c70f9b4996777cdcb2a9c97, type: 3}
       propertyPath: LerpAmount
       value: 0.025
       objectReference: {fileID: 0}
@@ -1002,44 +1017,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 73846224359855094, guid: 8642a29d9c70f9b4996777cdcb2a9c97, type: 3}
   m_PrefabInstance: {fileID: 1112610161}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1112610163 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 73846224359855093, guid: 8642a29d9c70f9b4996777cdcb2a9c97, type: 3}
-  m_PrefabInstance: {fileID: 1112610161}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1112610164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112610163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
 --- !u!1 &1219494713
 GameObject:
   m_ObjectHideFlags: 0
@@ -5826,6 +5803,10 @@ PrefabInstance:
     - target: {fileID: 687948007042493392, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 687948007042493393, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 687948007042493405, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
       propertyPath: m_RootOrder
