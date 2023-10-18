@@ -14,8 +14,11 @@ public class GroundedState : State
         if (Player.IsJumping == false && Player.RB.velocity.y > 0)
             Player.RB.velocity = new Vector2(Player.RB.velocity.x, 0);
 
+        /* Moved to SlingingState (on Exit)
         Player.SlingshotSpent = false;
         Player.IsSlinging = false;
+        Player.IsSlung = false;*/
+
         Player.PC.size = Player.DefaultColliderSize;
         Player.PA.Play("Grounded");
         Player.IsSlung = false;
@@ -29,6 +32,7 @@ public class GroundedState : State
 
     public override void Tick()
     {
+        // Moved to SlingingState
         /* Bounce mechanic (someone take a look at this pls :3 )
         if (Player.IsSlung && Player.RB.velocity.y > GetComponent<SlingingState>().BounceThreshold)
         {
@@ -44,8 +48,19 @@ public class GroundedState : State
         
         if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Jump))
         {
-            Player.IsJumping = true;
+            //Moved to AerialState (on Enter)
+            //Player.IsJumping = true;
+
             Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength);
+            Player.SM.ChangeState("Aerial");
+        }
+
+        //Correct me if I'm wrong but shouldn't IsSlining only be true when we are in SlingingState?
+        //Why would we need to check as we are in GroundedState?
+        //if (!Player.IsGrounded && !Player.IsSlinging)
+        if (!Player.IsGrounded)
+        {
+            Player.SM.ChangeState("Aerial");
         }
 
         if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))

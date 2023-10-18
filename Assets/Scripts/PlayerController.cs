@@ -73,7 +73,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Ground Check Modifications")]
     public Vector2 GroundCheckSize;
-    public Vector2 GroundCheckPos;
+    public Vector2 GroundCheckPos; 
+    public float GroundVelocityThreashold = 0.01f;
 
     public Vector2 ExternalForces;
 
@@ -151,16 +152,21 @@ public class PlayerController : MonoBehaviour
             DashBurstSpent = false;
         }
 
+        // Moved to GroundedState (on Tick)
+        // so that all state changes happen in their own state
+        //
         //If we're not slinging, and we're not on the ground
-        if(!IsSlinging && !IsGrounded)
-            SM.ChangeState("Aerial"); //Switch to aerial
+        //if(!IsSlinging && !IsGrounded)
+        //    SM.ChangeState("Aerial"); //Switch to aerial
     }
 
     private void GroundedCheck()
     {
         //Set our grounded bool to be the result of this boxcast per-frame
-        IsGrounded = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
-                                       GroundCheckSize, 0, Vector3.down, 0.1f);
+        //Ignore check if we have a non-negligable upwords velocity
+        if (RB.velocity.y <= GroundVelocityThreashold)
+            IsGrounded = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
+                                           GroundCheckSize, 0, Vector3.down, 0.1f);
     }
 
     void FixedUpdate()
