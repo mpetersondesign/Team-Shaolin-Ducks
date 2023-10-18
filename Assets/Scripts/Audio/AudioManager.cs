@@ -53,6 +53,8 @@ public class AudioManager : MonoBehaviour
         audioCue = this.GetComponent<AudioCue>();
 
         //initialize music and such
+        audioCue.PlayAudioCue();
+
         // not needed at the moment
         //OnSceneChange(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
     }
