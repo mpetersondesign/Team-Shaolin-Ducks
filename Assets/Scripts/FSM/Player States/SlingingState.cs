@@ -12,6 +12,9 @@ public class SlingingState : State
     public float BounceThreshold;
     public float BounceForce;
     public float MaxBounceForce;
+    public float HomingDistance = 4f;
+    public GameObject LockedOnTarget;
+    public Vector2 targetDir;
 
     protected override void OnStateInitialize()
     {
@@ -33,14 +36,33 @@ public class SlingingState : State
         SlingIndicator.gameObject.SetActive(false);
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)targetDir * HomingDistance);
+    }
+
     public override void Tick()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0f;
-        Vector2 targetDir = (Vector2)mousePos - (Vector2)SlingIndicator.transform.position;
+        mousePos.z = 0f; 
+        var EnemyHit = Physics2D.Raycast(transform.position, targetDir, 4f);
+        
+        if(EnemyHit.collider != null && EnemyHit.collider.gameObject.tag == "Enemy")
+        {
+            var nme = EnemyHit.collider.gameObject;
+            LockedOnTarget = nme;
+            targetDir = nme.transform.position - transform.position;
+        }
+        else
+        {
+            LockedOnTarget = null;
+            targetDir = (Vector2)mousePos - (Vector2)SlingIndicator.transform.position;
+        }
+
         SlingIndicator.transform.up = targetDir;
 
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             // temp location?
             if(GetComponent<AudioCue>() != null)

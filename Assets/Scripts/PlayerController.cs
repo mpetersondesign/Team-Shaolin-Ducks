@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
     {
         //Set our grounded bool to be the result of this boxcast per-frame
         IsGrounded = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
-                                       GroundCheckSize, 0, Vector3.down, 0.1f);
+                                       GroundCheckSize, 0, Vector3.down, 0.1f, TerrainLayer);
     }
 
     void FixedUpdate()
@@ -239,7 +239,7 @@ public class PlayerController : MonoBehaviour
 
         //Additional forces acting on our player
         RB.AddForce(AddForces);
-        AddForces = Vector3.zero;
+        AddForces = Vector2.Lerp(AddForces, Vector2.zero, 0.1f);
 
         //Set jumping to false if we aren't
         if (RB.velocity.y < 0)
