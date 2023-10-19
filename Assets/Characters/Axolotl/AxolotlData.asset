@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: AxolotlData
   m_EditorClassIdentifier: 
   characterName: Terrance
-  overworldSprite: {fileID: 21300000, guid: d7673f53b444cd9408608b01c45a1bca, type: 3}
-  portrait: {fileID: 21300000, guid: d7673f53b444cd9408608b01c45a1bca, type: 3}
+  portrait: {fileID: 511903192, guid: 625d2bc85b2c68b43a65eb5a47584cdb, type: 3}
