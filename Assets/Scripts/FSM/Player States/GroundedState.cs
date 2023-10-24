@@ -5,9 +5,12 @@ using UnityEngine;
 public class GroundedState : State
 {
     private PlayerController Player;
+    private PlayerEffectsActivator Effects;
+
     protected override void OnStateInitialize()
     {
         Player = GetComponent<PlayerController>();
+        Effects = GetComponent<PlayerEffectsActivator>();
     }
     public override void Enter(string previous_key, State previous_state)
     {
@@ -24,7 +27,8 @@ public class GroundedState : State
 
     public override void Exit(string next_key, State next_state)
     {
-
+        // in case of dashing off a cliff
+        Effects.StopDashEffects();
     }
 
     public override void Tick()
@@ -51,11 +55,13 @@ public class GroundedState : State
         if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))
         {
             Player.IsDashing = true;
+            Effects.StartDashEffects();
         }
         else
         {
             Player.IsDashing = false;
             Player.DashBurstSpent = false;
+            Effects.StopDashEffects();
         }
 
     }
