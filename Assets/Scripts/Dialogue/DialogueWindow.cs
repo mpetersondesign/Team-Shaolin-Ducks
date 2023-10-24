@@ -63,8 +63,8 @@ public class DialogueWindow : MonoBehaviour
     {
         numChar = currentDialogue.Lines[currentLine].Text.Length;
         SetUpDisplayText();
-        characterPortrait.sprite = currentDialogue.Speaker.portrait;
-        characterNameDisplay.text = currentDialogue.Speaker.characterName;
+        characterPortrait.sprite = currentDialogue.Lines[currentLine].Speaker.portrait;
+        characterNameDisplay.text = currentDialogue.Lines[currentLine].Speaker.characterName;
         dialogueDisplay.text = currentDisplayText;
         scrollingText = true;
     }
