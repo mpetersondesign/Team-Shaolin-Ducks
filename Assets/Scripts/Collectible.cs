@@ -16,4 +16,9 @@ public class Collectible : MonoBehaviour
             onCollect.Invoke();
         }
     }
+
+    public void CollectCount(int numCollect)
+    {
+        CollectibleCounter.Current.Collect(numCollect);
+    }
 }

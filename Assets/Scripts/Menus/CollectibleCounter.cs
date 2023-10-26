@@ -5,10 +5,23 @@ using TMPro;
 
 public class CollectibleCounter : MonoBehaviour
 {
+    public static CollectibleCounter Current;
 
     private int collectCount = 0;
 
     public TextMeshProUGUI numberDisplay;
+
+    private void Awake()
+    {
+        if(Current == null)
+        {
+            Current = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
 
     void FixedUpdate()
     {
