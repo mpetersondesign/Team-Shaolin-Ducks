@@ -130,8 +130,11 @@ public class PlayerController : MonoBehaviour
 
     private void ManageParticles()
     {
-        var ssa = SlingshotAfterimage.emission;
-        ssa.enabled = (IsSlinging || IsSlung);
+        if(SlingshotAfterimage != null)
+        {
+            var ssa = SlingshotAfterimage.emission;
+            ssa.enabled = (IsSlinging || IsSlung);
+        }
     }
 
     private void WallDetection()

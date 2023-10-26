@@ -7,6 +7,7 @@ public class PlayerEffectsActivator : MonoBehaviour
 {
     public GameObject SlingEffect;
     public GameObject WallSlideEffect;
+    public GameObject DashEffect;
     public Material ForegroundShader;
     public Camera MainCamera;
     public float ShakeScale;
@@ -14,13 +15,16 @@ public class PlayerEffectsActivator : MonoBehaviour
     public float ForegroundExpansionTime;
 
     private ParticleSystem wallSlideParticles;
+    private ParticleSystem dashParticles;
     private bool wallSlideActive = false;
+    private bool dashActive = false;
     private float foregroundUnscaledInterp = 0.0f;
 
     private void Awake()
     {
         ForegroundShader.SetFloat("_MaskSize", 0.0f);
         wallSlideParticles = WallSlideEffect.GetComponent<ParticleSystem>();
+        dashParticles = DashEffect.GetComponent<ParticleSystem>();
     }
 
     private void OnSling(Vector2 targetDir)
@@ -78,6 +82,26 @@ public class PlayerEffectsActivator : MonoBehaviour
         ParticleSystem.EmissionModule emission = wallSlideParticles.emission;
         emission.enabled = false;
         wallSlideActive = false;
+    }
+
+    public void StartDashEffects()
+    {
+        if (!wallSlideActive)
+        {
+            ParticleSystem.ShapeModule shape = dashParticles.shape;
+            ParticleSystem.EmissionModule emission = dashParticles.emission;
+            emission.enabled = true;
+            ParticleSystem.RotationBySpeedModule rotation = dashParticles.rotationBySpeed;
+
+            dashActive = true;
+        }
+    }
+
+    public void StopDashEffects()
+    {
+        ParticleSystem.EmissionModule emission = dashParticles.emission;
+        emission.enabled = false;
+        dashActive = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
