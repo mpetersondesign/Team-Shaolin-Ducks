@@ -13,13 +13,13 @@ using UnityEngine;
 [CreateAssetMenu]
 public class DialogueData : ScriptableObject
 {
-    public CharacterData Speaker;
     public List<DialogueLine> Lines = new List<DialogueLine>();
 }
 
 [System.Serializable]
 public class DialogueLine
 {
+    public CharacterData Speaker;
     public string Text;
 }
 
