@@ -17,12 +17,17 @@ public class DialogueWindow : MonoBehaviour
     public static DialogueWindow Current;
 
     public GameObject dialoguePanel;
+    public GameObject optionsPanel;
 
     public Image characterPortrait;
     public TextMeshProUGUI characterNameDisplay;
     public TextMeshProUGUI dialogueDisplay;
     public int textDelay = 1;
     private int textDelayTimer = 0;
+
+    public TextMeshProUGUI option1Display;
+    public TextMeshProUGUI option2Display;
+    public TextMeshProUGUI option3Display;
 
     [SerializeField]
     private DialogueData currentDialogue;
@@ -61,12 +66,38 @@ public class DialogueWindow : MonoBehaviour
 
     public void UpdateText()
     {
-        numChar = currentDialogue.Lines[currentLine].Text.Length;
+        numChar = FindNumChar(currentDialogue.Lines[currentLine].Text);
         SetUpDisplayText();
         characterPortrait.sprite = currentDialogue.Lines[currentLine].Speaker.portrait;
         characterNameDisplay.text = currentDialogue.Lines[currentLine].Speaker.characterName;
         dialogueDisplay.text = currentDisplayText;
+        CheckOptions();
         scrollingText = true;
+    }
+
+    public int FindNumChar(string text)
+    {
+        int num = 0;
+        bool inField = false;
+        char[] textChars = text.ToCharArray();
+        for (int i = 0; i < text.Length; i++)
+        {
+            if(textChars[i] == '<')
+            {
+                inField = true;
+            }
+
+            if (!inField)
+            {
+                num++;
+            }
+
+            if(textChars[i] == '>')
+            {
+                inField = false;
+            }
+        }
+        return num;
     }
 
     public void AdvanceText()
@@ -82,9 +113,28 @@ public class DialogueWindow : MonoBehaviour
             {
                 currentLine = 0;
                 dialoguePanel.SetActive(false);
+                optionsPanel.SetActive(false);
                 FindObjectOfType<PlayerController>().CanMove = true;
                 // Let Player Move Again
             }
+        }
+    }
+
+    public void SelectOption(int option)
+    {
+        switch (option)
+        {
+            case 0:
+                
+                break;
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            default:
+                break;
         }
     }
 
@@ -97,6 +147,22 @@ public class DialogueWindow : MonoBehaviour
             currentDisplayText += " ";
         }
     }
+
+    public void CheckOptions()
+    {
+        if(currentDialogue.Lines[currentLine].Dialogue_Type == DialogueType.options)
+        {
+            optionsPanel.SetActive(true);
+            option1Display.text = currentDialogue.Lines[currentLine].Options[0].OptionLabel;
+            option2Display.text = currentDialogue.Lines[currentLine].Options[1].OptionLabel;
+            option3Display.text = currentDialogue.Lines[currentLine].Options[2].OptionLabel;
+        }
+        else
+        {
+            optionsPanel.SetActive(false);
+        }
+    }
+
 
     private void FixedUpdate()
     {
@@ -121,14 +187,25 @@ public class DialogueWindow : MonoBehaviour
 
     public void TextScrollUpdate()
     {
-        if (currentChar <= numChar)
+        if (currentChar < currentDialogue.Lines[currentLine].Text.Length)
         {
-            currentDisplayText = currentDialogue.Lines[currentLine].Text.Substring(0, currentChar);
-            currentChar++;
+            currentDisplayText = GetSubstring(currentDialogue.Lines[currentLine].Text);
         }
         else
         {
             scrollingText = false;
         }
+    }
+
+    public string GetSubstring(string text)
+    {
+        if (text.ToCharArray()[currentChar] == '<')
+        {
+            do
+            {
+                currentChar++;
+            } while (text.ToCharArray()[currentChar] != '>');
+        }
+        return text.Substring(0, 1 + currentChar++);
     }
 }
