@@ -121,7 +121,7 @@ public class DialogueWindow : MonoBehaviour
 
     public void TextScrollUpdate()
     {
-        if (currentChar < numChar)
+        if (currentChar <= numChar)
         {
             currentDisplayText = currentDialogue.Lines[currentLine].Text.Substring(0, currentChar);
             currentChar++;
