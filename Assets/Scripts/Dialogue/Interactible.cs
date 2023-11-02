@@ -60,8 +60,12 @@ public class Interactible : MonoBehaviour
         }
     }
 
-    public void DialogueEnd(int endIndex = 0)
+    public void DialogueEvent(int endIndex = 0)
     {
+        if(endIndex < 0 || endIndex > dialogueEvents.Count)
+        {
+            return;
+        }
         dialogueEvents[endIndex].Invoke();
     }
 }

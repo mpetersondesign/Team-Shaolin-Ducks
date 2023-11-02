@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 /**
     File: DialogueWindow.cs 
@@ -31,6 +32,8 @@ public class DialogueWindow : MonoBehaviour
 
     private Interactible interactedActor;
     private DialogueData currentDialogue;
+
+    [SerializeField]
     private int currentLine = 0;
 
     private int numChar;
@@ -134,7 +137,7 @@ public class DialogueWindow : MonoBehaviour
         if (dialoguePanel.activeSelf)
         {
             currentLine = nextLine;
-
+            
             if (currentLine < currentDialogue.Lines.Count && currentLine >= 0)
             {
                 UpdateText();
@@ -152,7 +155,7 @@ public class DialogueWindow : MonoBehaviour
 
     public void SelectOption(int option)
     {
-        interactedActor.DialogueEnd(currentDialogue.Lines[currentLine].Options[option].Output);
+        interactedActor.DialogueEvent(currentDialogue.Lines[currentLine].Options[option].Output);
         AdvanceText(currentDialogue.Lines[currentLine].Options[option].NextLine);
     }
 
@@ -226,4 +229,5 @@ public class DialogueWindow : MonoBehaviour
         }
         return text.Substring(0, 1 + currentChar++);
     }
+
 }
