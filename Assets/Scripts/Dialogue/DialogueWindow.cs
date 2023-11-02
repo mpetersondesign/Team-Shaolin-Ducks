@@ -29,7 +29,7 @@ public class DialogueWindow : MonoBehaviour
     public TextMeshProUGUI option2Display;
     public TextMeshProUGUI option3Display;
 
-    [SerializeField]
+    private Interactible interactedActor;
     private DialogueData currentDialogue;
     private int currentLine = 0;
 
@@ -50,12 +50,13 @@ public class DialogueWindow : MonoBehaviour
         }
     }
 
-    public void DisplayDialogue(DialogueData data)
+    public void DisplayDialogue(Interactible actor, DialogueData data)
     {
         if (dialoguePanel.activeSelf)
         {
             return;
         }
+        interactedActor = actor;
         dialoguePanel.SetActive(true);
         FindObjectOfType<PlayerController>().RB.velocity = Vector2.zero;
         FindObjectOfType<PlayerController>().CanMove = false;
@@ -104,8 +105,37 @@ public class DialogueWindow : MonoBehaviour
     {
         if (dialoguePanel.activeSelf)
         {
-            currentLine++;
+            if(currentDialogue.Lines[currentLine].NextLine >= 0)
+            {
+                currentLine = currentDialogue.Lines[currentLine].NextLine;
+            }
+            else
+            {
+                currentLine++;
+            }
+
             if (currentLine < currentDialogue.Lines.Count)
+            {
+                UpdateText();
+            }
+            else
+            {
+                currentLine = 0;
+                dialoguePanel.SetActive(false);
+                optionsPanel.SetActive(false);
+                FindObjectOfType<PlayerController>().CanMove = true;
+                // Let Player Move Again
+            }
+        }
+    }
+
+    public void AdvanceText(int nextLine)
+    {
+        if (dialoguePanel.activeSelf)
+        {
+            currentLine = nextLine;
+
+            if (currentLine < currentDialogue.Lines.Count && currentLine >= 0)
             {
                 UpdateText();
             }
@@ -122,20 +152,8 @@ public class DialogueWindow : MonoBehaviour
 
     public void SelectOption(int option)
     {
-        switch (option)
-        {
-            case 0:
-                
-                break;
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-            default:
-                break;
-        }
+        interactedActor.DialogueEnd(currentDialogue.Lines[currentLine].Options[option].Output);
+        AdvanceText(currentDialogue.Lines[currentLine].Options[option].NextLine);
     }
 
     public void SetUpDisplayText()

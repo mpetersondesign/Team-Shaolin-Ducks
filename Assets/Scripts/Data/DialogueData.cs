@@ -31,6 +31,7 @@ public class DialogueOption
 {
     public string OptionLabel;
     public int Output;
+    public int NextLine = -1;
 }
 
 [System.Serializable]
@@ -39,6 +40,7 @@ public class DialogueLine
     // Basic Dialogue
     public CharacterData Speaker;
     public string Text;
+    public int NextLine = -1;
 
     // Dialogue Options
     public DialogueType Dialogue_Type = DialogueType.standard;
@@ -66,6 +68,10 @@ public class DialogueLine
                 propertyText.stringValue = EditorGUI.TextField(currPosition, propertyText.displayName, propertyText.stringValue);
 
                 currPosition.y += EditorGUIUtility.singleLineHeight;
+                SerializedProperty propertyNextLine = property.FindPropertyRelative("NextLine");
+                propertyNextLine.intValue = EditorGUI.IntField(currPosition, propertyNextLine.displayName, propertyNextLine.intValue);
+
+                currPosition.y += EditorGUIUtility.singleLineHeight;
                 SerializedProperty propertyType = property.FindPropertyRelative("Dialogue_Type");
                 propertyType.enumValueIndex = (int)(DialogueType)EditorGUI.EnumPopup(currPosition, propertyType.displayName, (DialogueType)propertyType.enumValueIndex);
                 if ((DialogueType)propertyType.enumValueIndex == DialogueType.options)
@@ -79,11 +85,11 @@ public class DialogueLine
             }
         }
 
-        private const float EXPAND_HEIGHT = 3.5f;
+        private const float EXPAND_HEIGHT = 4.5f;
         private const float EXPAND_EXTRA_HEIGHT = 1f;
         private const float EXPAND_EXPAND_HEIGHT = 2.5f;
         private const float EXPAND_EXPAND_EXTRA_HEIGHT = 1.11f;
-        private const float EXPAND_EXPAND_EXPAND_HEIGHT = 2f;
+        private const float EXPAND_EXPAND_EXPAND_HEIGHT = 3f;
 
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
