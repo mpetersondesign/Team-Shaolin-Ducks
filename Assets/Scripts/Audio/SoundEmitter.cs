@@ -8,6 +8,8 @@ public class SoundEmitter : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] AudioConfigurationSO musicChannelRef;
     public bool isMusic;
+    public bool isFading;
+    public string key;
 
     private void Awake()
     {
@@ -47,6 +49,8 @@ public class SoundEmitter : MonoBehaviour
             return false;
 
         isMusic = false;
+        key = "0";
+        isFading = false;
         return true;
     }
     

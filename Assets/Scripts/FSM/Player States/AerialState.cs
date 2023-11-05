@@ -6,11 +6,14 @@ public class AerialState : State
 {
     private PlayerController Player;
     private PlayerEffectsActivator Effects;
+    private AudioCue audioCue;
+    private string wallSlideKey = "wallSlide";
 
     protected override void OnStateInitialize()
     {
         Player = GetComponent<PlayerController>();
         Effects = GetComponent<PlayerEffectsActivator>();
+        audioCue = GetComponent<AudioCue>();
         Machine.SetCurrentState(Key);
     }
 
@@ -28,6 +31,9 @@ public class AerialState : State
             {
                 Effects.StopWallSlideEffects();
             }
+
+            if (audioCue != null)
+                audioCue.StopAudioCue(wallSlideKey, 0.2f);
         }
     }
 
@@ -40,6 +46,8 @@ public class AerialState : State
             if((Player.PI.RawInput.x > 0 && Player.AgainstWall == 1) ||
                (Player.PI.RawInput.x < 0 && Player.AgainstWall == -1))
             {
+
+
                 Player.IsWallSliding = true;
 
                 //Placeholder animation (we don't want to be in our slung animation)
@@ -55,10 +63,19 @@ public class AerialState : State
                 {
                     Effects.StartWallSlideEffects(Player.AgainstWall);
                 }
+
+                if (audioCue != null)
+                    audioCue.StartAudioCue(2, wallSlideKey);
+
+
             }
             else
             {
                 Effects.StopWallSlideEffects();
+
+                if (audioCue != null)
+                    audioCue.StopAudioCue(wallSlideKey, 0.2f);
+                
                 Player.IsWallSliding = false;
             }
         }
