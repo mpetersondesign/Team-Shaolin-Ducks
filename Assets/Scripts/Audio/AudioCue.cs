@@ -62,7 +62,7 @@ public class AudioCue : MonoBehaviour
         
         Cue cuegroup = list[index];
 
-        audioChannel.RaiseEvent(cuegroup.cue, cuegroup.config, transform.position, 'f');
+        audioChannel.RaisePlayEvent(cuegroup.cue, cuegroup.config, transform.position, 'f');
     }
 
     //same as above, but this time resets sequential read value to account for missed audio calls
@@ -85,7 +85,7 @@ public class AudioCue : MonoBehaviour
 
         Cue cuegroup = list[index];
 
-        audioChannel.RaiseEvent(cuegroup.cue, cuegroup.config, transform.position, 't');
+        audioChannel.RaisePlayEvent(cuegroup.cue, cuegroup.config, transform.position, 't');
     }
 
     public void PlayAudioCuePitched(int index = 0, float pitch = 1.0f, char restart = 'f')
@@ -109,7 +109,35 @@ public class AudioCue : MonoBehaviour
 
         cuegroup.config.pitch = pitch;
 
-        audioChannel.RaiseEvent(cuegroup.cue, cuegroup.config, transform.position, restart);
+        audioChannel.RaisePlayEvent(cuegroup.cue, cuegroup.config, transform.position, restart);
 
+    }
+
+    public void StartAudioCue(int index = 0, string key = "0")
+    {
+        if (disabled)
+            return;
+
+        if (list.Count == 0)
+        {
+            //Debug.LogWarning("Play Audio Cue " + index + " has list count 0");
+            return;
+        }
+
+        if (index >= audioCues.Length)
+        {
+            //Debug.LogWarning("Play Audio Cue " + index + " is out of range index");
+            return;
+        }
+
+        Cue cuegroup = list[index];
+
+        audioChannel.RaiseStartEvent(cuegroup.cue, cuegroup.config, transform.position, key);
+
+    }
+
+    public void StopAudioCue(string key = "0", float fadeDuration = 0.2f)
+    {
+        audioChannel.RaiseStopEvent(key, fadeDuration);
     }
 }

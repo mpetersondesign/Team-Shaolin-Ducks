@@ -41,6 +41,8 @@ public class AudioManager : MonoBehaviour
     private void OnEnable()
     {
         SFX_channel.OnAudioCueRequestPlay += PlayAudioCue;
+        SFX_channel.OnAudioCueRequestStart += StartAudioCue;
+        SFX_channel.OnAudioCueRequestStop += StopAudioCue;
         Music_channel.OnAudioCueRequestPlay += PlayAudioCue;
     }
 
@@ -77,6 +79,39 @@ public class AudioManager : MonoBehaviour
         else
         {
             //Debug.Log("No emitter available for audio cue");
+        }
+    }
+
+    public void StartAudioCue(AudioCueSO audioCue, AudioConfigurationSO audioConfig, Vector3 position = default, string key = "0")
+    {
+        SoundEmitter emitter;
+        foreach (SoundEmitter e in emitterPool)
+            if (e.key != "0" && e.key == key && e.isFading == false)
+                return; // dont start another audioCue of the same sound if it is still playing
+
+        //get emitter to play cue on
+        if ((emitter = GetEmitter()) != null)
+        {
+            emitter.PlayAudioCue(audioCue.GetClip('f'), audioConfig, audioCue.isLooping, position);
+            emitter.key = key;
+            //Debug.Log("playing audio cue");
+        }
+        else
+        {
+            //Debug.Log("No emitter available for audio cue");
+        }
+    }
+
+    public void StopAudioCue(string key, float fadeDuration = 0.2f)
+    {
+        foreach (SoundEmitter e in emitterPool)
+        {
+            if (e.key == key && e.isFading == false)
+            {
+                e.isFading = true;
+                StartCoroutine(Fade(e.GetComponent<AudioSource>(), fadeDuration,0.0f, e.GetComponent<AudioSource>().volume));
+                break;
+            }
         }
     }
 
@@ -131,7 +166,9 @@ public class AudioManager : MonoBehaviour
 
         if (target == 0.0f)
         {
-            source.GetComponent<SoundEmitter>().isMusic = false;
+            source.GetComponent<SoundEmitter>().isMusic = false; // rewrite this
+            source.GetComponent<SoundEmitter>().isFading = false;
+            source.GetComponent<SoundEmitter>().key = "0";
             source.Stop();
         }
         yield break;
