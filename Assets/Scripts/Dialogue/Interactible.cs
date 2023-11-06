@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /**
     File: Interactible.cs 
@@ -17,6 +18,8 @@ public class Interactible : MonoBehaviour
     [SerializeField]
     private bool seePlayer;
     private PlayerInputs playerInputs;
+
+    public List<UnityEvent> dialogueEvents = new List<UnityEvent>();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -51,9 +54,18 @@ public class Interactible : MonoBehaviour
                 }
                 else
                 {
-                    DialogueWindow.Current.DisplayDialogue(interactionData);
+                    DialogueWindow.Current.DisplayDialogue(this, interactionData);
                 }
             }
         }
+    }
+
+    public void DialogueEvent(int endIndex = 0)
+    {
+        if(endIndex < 0 || endIndex > dialogueEvents.Count)
+        {
+            return;
+        }
+        dialogueEvents[endIndex].Invoke();
     }
 }
