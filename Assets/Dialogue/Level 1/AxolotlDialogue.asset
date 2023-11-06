@@ -14,8 +14,115 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lines:
   - Speaker: {fileID: 11400000, guid: 9d1f8ab3050557d45b0cb050698b6f3b, type: 2}
-    Text: Hi, I'm Terrance.
+    Text: Hi, I'm <color=#00FFAA><b><u>Terrance</u></b></color>.
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
   - Speaker: {fileID: 11400000, guid: 9d1f8ab3050557d45b0cb050698b6f3b, type: 2}
     Text: I'm an axolotl.
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
   - Speaker: {fileID: 11400000, guid: 422c80dd41ff8d843ba3847cee681540, type: 2}
     Text: Hello!
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 9d1f8ab3050557d45b0cb050698b6f3b, type: 2}
+    Text: Who are you?
+    NextLine: -1
+    Dialogue_Type: 1
+    Options:
+    - OptionLabel: Lily
+      Output: 4
+      NextLine: 4
+    - OptionLabel: A witch
+      Output: 5
+      NextLine: 6
+    - OptionLabel: No one
+      Output: 6
+      NextLine: 8
+  - Speaker: {fileID: 11400000, guid: 422c80dd41ff8d843ba3847cee681540, type: 2}
+    Text: I'm Lily!
+    NextLine: 5
+    Dialogue_Type: 0
+    Options:
+    - OptionLabel: Lily
+      Output: 4
+      NextLine: 0
+    - OptionLabel: A witch
+      Output: 5
+      NextLine: 0
+    - OptionLabel: No One
+      Output: 6
+      NextLine: 0
+  - Speaker: {fileID: 11400000, guid: 9d1f8ab3050557d45b0cb050698b6f3b, type: 2}
+    Text: Oh, nice to meet you Lily!
+    NextLine: 10
+    Dialogue_Type: 0
+    Options:
+    - OptionLabel: Lily
+      Output: 4
+      NextLine: 0
+    - OptionLabel: A witch
+      Output: 5
+      NextLine: 0
+    - OptionLabel: No One
+      Output: 6
+      NextLine: 0
+  - Speaker: {fileID: 11400000, guid: 422c80dd41ff8d843ba3847cee681540, type: 2}
+    Text: I'm just a witch.
+    NextLine: 7
+    Dialogue_Type: 0
+    Options:
+    - OptionLabel: Lily
+      Output: 4
+      NextLine: 0
+    - OptionLabel: A witch
+      Output: 5
+      NextLine: 0
+    - OptionLabel: No One
+      Output: 6
+      NextLine: 0
+  - Speaker: {fileID: 11400000, guid: 9d1f8ab3050557d45b0cb050698b6f3b, type: 2}
+    Text: I see, I won't pry.
+    NextLine: 10
+    Dialogue_Type: 0
+    Options:
+    - OptionLabel: Lily
+      Output: 4
+      NextLine: 0
+    - OptionLabel: A witch
+      Output: 5
+      NextLine: 0
+    - OptionLabel: No One
+      Output: 6
+      NextLine: 0
+  - Speaker: {fileID: 11400000, guid: 422c80dd41ff8d843ba3847cee681540, type: 2}
+    Text: I'm nobody.
+    NextLine: 9
+    Dialogue_Type: 0
+    Options:
+    - OptionLabel: Lily
+      Output: 4
+      NextLine: 0
+    - OptionLabel: A witch
+      Output: 5
+      NextLine: 0
+    - OptionLabel: No One
+      Output: 6
+      NextLine: 0
+  - Speaker: {fileID: 11400000, guid: 9d1f8ab3050557d45b0cb050698b6f3b, type: 2}
+    Text: Oh... I see...
+    NextLine: 10
+    Dialogue_Type: 0
+    Options:
+    - OptionLabel: Lily
+      Output: 4
+      NextLine: 0
+    - OptionLabel: A witch
+      Output: 5
+      NextLine: 0
+    - OptionLabel: No One
+      Output: 6
+      NextLine: 0

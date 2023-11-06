@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 /**
     File: DialogueWindow.cs 
@@ -17,6 +18,7 @@ public class DialogueWindow : MonoBehaviour
     public static DialogueWindow Current;
 
     public GameObject dialoguePanel;
+    public GameObject optionsPanel;
 
     public Image characterPortrait;
     public TextMeshProUGUI characterNameDisplay;
@@ -24,8 +26,14 @@ public class DialogueWindow : MonoBehaviour
     public int textDelay = 1;
     private int textDelayTimer = 0;
 
-    [SerializeField]
+    public TextMeshProUGUI option1Display;
+    public TextMeshProUGUI option2Display;
+    public TextMeshProUGUI option3Display;
+
+    private Interactible interactedActor;
     private DialogueData currentDialogue;
+
+    [SerializeField]
     private int currentLine = 0;
 
     private int numChar;
@@ -45,12 +53,13 @@ public class DialogueWindow : MonoBehaviour
         }
     }
 
-    public void DisplayDialogue(DialogueData data)
+    public void DisplayDialogue(Interactible actor, DialogueData data)
     {
         if (dialoguePanel.activeSelf)
         {
             return;
         }
+        interactedActor = actor;
         dialoguePanel.SetActive(true);
         FindObjectOfType<PlayerController>().RB.velocity = Vector2.zero;
         FindObjectOfType<PlayerController>().CanMove = false;
@@ -61,19 +70,53 @@ public class DialogueWindow : MonoBehaviour
 
     public void UpdateText()
     {
-        numChar = currentDialogue.Lines[currentLine].Text.Length;
+        numChar = FindNumChar(currentDialogue.Lines[currentLine].Text);
         SetUpDisplayText();
         characterPortrait.sprite = currentDialogue.Lines[currentLine].Speaker.portrait;
         characterNameDisplay.text = currentDialogue.Lines[currentLine].Speaker.characterName;
         dialogueDisplay.text = currentDisplayText;
+        CheckOptions();
         scrollingText = true;
+    }
+
+    public int FindNumChar(string text)
+    {
+        int num = 0;
+        bool inField = false;
+        char[] textChars = text.ToCharArray();
+        for (int i = 0; i < text.Length; i++)
+        {
+            if(textChars[i] == '<')
+            {
+                inField = true;
+            }
+
+            if (!inField)
+            {
+                num++;
+            }
+
+            if(textChars[i] == '>')
+            {
+                inField = false;
+            }
+        }
+        return num;
     }
 
     public void AdvanceText()
     {
         if (dialoguePanel.activeSelf)
         {
-            currentLine++;
+            if(currentDialogue.Lines[currentLine].NextLine >= 0)
+            {
+                currentLine = currentDialogue.Lines[currentLine].NextLine;
+            }
+            else
+            {
+                currentLine++;
+            }
+
             if (currentLine < currentDialogue.Lines.Count)
             {
                 UpdateText();
@@ -82,10 +125,38 @@ public class DialogueWindow : MonoBehaviour
             {
                 currentLine = 0;
                 dialoguePanel.SetActive(false);
+                optionsPanel.SetActive(false);
                 FindObjectOfType<PlayerController>().CanMove = true;
                 // Let Player Move Again
             }
         }
+    }
+
+    public void AdvanceText(int nextLine)
+    {
+        if (dialoguePanel.activeSelf)
+        {
+            currentLine = nextLine;
+            
+            if (currentLine < currentDialogue.Lines.Count && currentLine >= 0)
+            {
+                UpdateText();
+            }
+            else
+            {
+                currentLine = 0;
+                dialoguePanel.SetActive(false);
+                optionsPanel.SetActive(false);
+                FindObjectOfType<PlayerController>().CanMove = true;
+                // Let Player Move Again
+            }
+        }
+    }
+
+    public void SelectOption(int option)
+    {
+        interactedActor.DialogueEvent(currentDialogue.Lines[currentLine].Options[option].Output);
+        AdvanceText(currentDialogue.Lines[currentLine].Options[option].NextLine);
     }
 
     public void SetUpDisplayText()
@@ -97,6 +168,22 @@ public class DialogueWindow : MonoBehaviour
             currentDisplayText += " ";
         }
     }
+
+    public void CheckOptions()
+    {
+        if(currentDialogue.Lines[currentLine].Dialogue_Type == DialogueType.options)
+        {
+            optionsPanel.SetActive(true);
+            option1Display.text = currentDialogue.Lines[currentLine].Options[0].OptionLabel;
+            option2Display.text = currentDialogue.Lines[currentLine].Options[1].OptionLabel;
+            option3Display.text = currentDialogue.Lines[currentLine].Options[2].OptionLabel;
+        }
+        else
+        {
+            optionsPanel.SetActive(false);
+        }
+    }
+
 
     private void FixedUpdate()
     {
@@ -121,14 +208,26 @@ public class DialogueWindow : MonoBehaviour
 
     public void TextScrollUpdate()
     {
-        if (currentChar < numChar)
+        if (currentChar < currentDialogue.Lines[currentLine].Text.Length)
         {
-            currentDisplayText = currentDialogue.Lines[currentLine].Text.Substring(0, currentChar);
-            currentChar++;
+            currentDisplayText = GetSubstring(currentDialogue.Lines[currentLine].Text);
         }
         else
         {
             scrollingText = false;
         }
     }
+
+    public string GetSubstring(string text)
+    {
+        if (text.ToCharArray()[currentChar] == '<')
+        {
+            do
+            {
+                currentChar++;
+            } while (text.ToCharArray()[currentChar] != '>');
+        }
+        return text.Substring(0, 1 + currentChar++);
+    }
+
 }
