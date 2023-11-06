@@ -5679,9 +5679,11 @@ MonoBehaviour:
   audioCues:
   - {fileID: 11400000, guid: 85b737d891a706d46bda8f58ba5e5966, type: 2}
   - {fileID: 11400000, guid: 78289ed4e9185664d8d4b8e934bea542, type: 2}
+  - {fileID: 11400000, guid: 3418ac2a79fe1be4d8cddfe7c83a35e6, type: 2}
   audioConfigs:
   - {fileID: 11400000, guid: 893d8d384f7e723438fd63cce001f083, type: 2}
   - {fileID: 11400000, guid: 796734d53c28a4c4e8a4a60a6d1cecdc, type: 2}
+  - {fileID: 11400000, guid: 0151fe248d8f5744c8ffc927bc83cc2f, type: 2}
   audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!114 &8259757892592154684
 MonoBehaviour:
