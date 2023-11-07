@@ -6,10 +6,17 @@ using UnityEngine;
 public class FallingBlock : MonoBehaviour
 {
     public float FallDelay = 0.35f;
+
+    private bool Activated = false;
+
     public void Activate()
     {
-        StartCoroutine(nameof(Rumble));
-        Invoke("StartFalling", FallDelay);
+        if (!Activated)
+        {
+            StartCoroutine(nameof(Rumble));
+            Invoke("StartFalling", FallDelay);
+            Activated = true;
+        }
     }
 
     public void StartFalling()
@@ -31,6 +38,8 @@ public class FallingBlock : MonoBehaviour
         }
 
         transform.position = new Vector3(originalX, transform.position.y, transform.position.z);
-        
+
+        // enable particles
+        GetComponent<ParticleSystem>().Play();
     }
 }
