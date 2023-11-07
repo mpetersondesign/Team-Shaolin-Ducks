@@ -17,11 +17,13 @@ public class GroundedState : State
         if (Player.IsJumping == false && Player.RB.velocity.y > 0)
             Player.RB.velocity = new Vector2(Player.RB.velocity.x, 0);
 
+        /* Moved to SlingingState (on Exit)
         Player.SlingshotSpent = false;
         Player.IsSlinging = false;
+        Player.IsSlung = false;*/
+
         Player.PC.size = Player.DefaultColliderSize;
         Player.PA.Play("Grounded");
-        Player.IsSlung = false;
         GetComponent<AudioCue>().PlayAudioCue(1); // plays player landing sfx, can be moved to events later
     }
 
@@ -33,6 +35,7 @@ public class GroundedState : State
 
     public override void Tick()
     {
+        // Moved to SlingingState
         /* Bounce mechanic (someone take a look at this pls :3 )
         if (Player.IsSlung && Player.RB.velocity.y > GetComponent<SlingingState>().BounceThreshold)
         {
@@ -45,12 +48,18 @@ public class GroundedState : State
             Mathf.Clamp(bouncePower, 0, GetComponent<SlingingState>().MaxBounceForce);
             Player.RB.AddForce(bounceDirection * bouncePower, ForceMode2D.Impulse);
         } */
-        
+
         if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Jump))
         {
-            Player.IsJumping = true;
+            //Moved to AerialState (on Enter)
+            //Player.IsJumping = true;
             Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength);
             Debug.Log("Jump");
+        }
+
+        if (!Player.IsGrounded && !Player.IsSlinging)
+        {
+            Player.SM.ChangeState("Aerial");
         }
 
         if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))
@@ -64,6 +73,5 @@ public class GroundedState : State
             Player.DashBurstSpent = false;
             Effects.StopDashEffects();
         }
-
     }
 }

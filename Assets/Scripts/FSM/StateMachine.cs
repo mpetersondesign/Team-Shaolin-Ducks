@@ -34,12 +34,19 @@ public class StateMachine : MonoBehaviour
             //Run initialize on the current state in array
             attachedStates[i].Initialize(this);
         }
+
+        SetCurrentState("Grounded");
     }
 
     private void Update()
     {
         //? acts as a null check, meaning if CurrentState isnt null, run Tick()
         CurrentState?.Tick();
+    }
+
+    public State GetState(string key)
+    {
+        return States[key];
     }
 
     public void ChangeState(string key)

@@ -8,6 +8,10 @@ public class AerialState : State
     private PlayerEffectsActivator Effects;
     private AudioCue audioCue;
     private string wallSlideKey = "wallSlide";
+    private static bool hasDoubleJump;
+
+    // for debug info
+    public static bool HasDoubleJump { get => hasDoubleJump; }
 
     protected override void OnStateInitialize()
     {
@@ -19,7 +23,8 @@ public class AerialState : State
 
     public override void Enter(string previous_key, State previous_state)
     {
-
+        Debug.Log("Enter Aerial");
+        hasDoubleJump = true;
     }
 
     public override void Exit(string next_key, State next_state)

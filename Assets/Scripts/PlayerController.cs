@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
     [Header("Ground Check Modifications")]
     public Vector2 GroundCheckSize;
     public Vector2 GroundCheckPos;
+    public float GroundVelocityThreashold = 0.01f;
 
     public Vector2 ExternalForces;
 
@@ -165,9 +166,12 @@ public class PlayerController : MonoBehaviour
             DashBurstSpent = false;
         }
 
+        // Moved fallowing code to grounded state
+        // so that all state changes happen in their own state
+        //
         //If we're not slinging, and we're not on the ground
-        if(!IsSlinging && !IsGrounded)
-            SM.ChangeState("Aerial"); //Switch to aerial
+        //if(!IsSlinging && !IsGrounded)
+        //    SM.ChangeState("Aerial"); //Switch to aerial
     }
 
     private void GroundedCheck()
@@ -262,8 +266,10 @@ public class PlayerController : MonoBehaviour
         AddForces = Vector2.Lerp(AddForces, Vector2.zero, 0.1f);
 
         //Set jumping to false if we aren't
-        if (RB.velocity.y < 0)
-            IsJumping = false;
+        //Ignore check if we have a non-negligable upwords velocity
+        if (RB.velocity.y <= GroundVelocityThreashold)
+            IsGrounded = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
+                                           GroundCheckSize, 0, Vector3.down, 0.1f);
     }
 
     private void OnDrawGizmos()
@@ -294,10 +300,12 @@ public class PlayerController : MonoBehaviour
 
     void OnGUI()
     {
+
         GUI.Box(new Rect(10, 10, 200, 25), "State: " + SM.CurrentState.Key);
         GUI.Box(new Rect(10, 35, 200, 25), "Dashing: " + IsDashing);
         GUI.Box(new Rect(10, 60, 200, 25), "Jumping: " + IsJumping);
         GUI.Box(new Rect(10, 85, 200, 25), "Slinging: " + IsSlinging);
         GUI.Box(new Rect(10, 110, 200, 25), "Slung: " + IsSlung);
+        GUI.Box(new Rect(10, 135, 200, 25), "Has Double Jump: " + AerialState.HasDoubleJump);
     }
 }
