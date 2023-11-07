@@ -50,6 +50,7 @@ public class GroundedState : State
         {
             Player.IsJumping = true;
             Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength);
+            Debug.Log("Jump");
         }
 
         if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))

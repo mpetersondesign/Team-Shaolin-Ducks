@@ -90,6 +90,18 @@ public class AerialState : State
         if (Player.IsGrounded && !Player.IsJumping)
             Player.SM.ChangeState("Grounded"); //Switch to grounded
 
+        if (hasDoubleJump && Player.PI.OnPress(PlayerInputs.PlayerAction.Jump))
+        {
+            Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength / 2);
+            hasDoubleJump = false;
+            Debug.Log("Double Jump");
+        }
+
+        if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))
+        {
+            Debug.Log("Test");
+        }
+
         //If we press our dash key in the air and we haven't already slung ourselves
         if(Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash) && !Player.SlingshotSpent)
         {

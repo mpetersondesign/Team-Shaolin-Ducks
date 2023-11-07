@@ -297,6 +297,7 @@ public class PlayerController : MonoBehaviour
         GUI.Box(new Rect(10, 10, 200, 25), "State: " + SM.CurrentState.Key);
         GUI.Box(new Rect(10, 35, 200, 25), "Dashing: " + IsDashing);
         GUI.Box(new Rect(10, 60, 200, 25), "Jumping: " + IsJumping);
-        GUI.Box(new Rect(10, 85, 200, 25), "Slung: " + IsSlung);
+        GUI.Box(new Rect(10, 85, 200, 25), "Slinging: " + IsSlinging);
+        GUI.Box(new Rect(10, 110, 200, 25), "Slung: " + IsSlung);
     }
 }
