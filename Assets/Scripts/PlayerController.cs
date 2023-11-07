@@ -172,15 +172,32 @@ public class PlayerController : MonoBehaviour
 
     private void GroundedCheck()
     {
-        //Set our grounded bool to be the result of this boxcast per-frame
-        IsGrounded = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
+        RaycastHit2D GroundCheckResults = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
                                        GroundCheckSize, 0, Vector3.down, 0.1f, TerrainLayer);
+
+        IsGrounded = (GroundCheckResults == true);
+
+        if(GroundCheckResults.collider != null)
+        {
+            if (GroundCheckResults.collider.gameObject.tag == "Falling")
+                GroundCheckResults.collider.gameObject.GetComponent<FallingBlock>().Activate();
+
+            if(IsSlung)
+                if (GroundCheckResults.collider.gameObject.tag == "Breakable")
+                    GroundCheckResults.collider.gameObject.GetComponent<BreakableBlock>().Activate();
+        }
     }
 
     void FixedUpdate()
     {
         if(CanMove)
             MovePlayer();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Breakable" && IsSlung)
+            collision.gameObject.GetComponent<BreakableBlock>().Activate();
     }
 
     private void MovePlayer()

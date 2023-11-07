@@ -7,6 +7,8 @@ TagManager:
   - AudioManager
   - ForegroundTrigger
   - Enemy
+  - Falling
+  - Breakable
   layers:
   - Default
   - TransparentFX
