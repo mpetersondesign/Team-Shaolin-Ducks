@@ -81,6 +81,7 @@ public class AerialState : State
         {
             Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength / 2);
             hasDoubleJump = false;
+            Debug.Log("Double Jump");
         }
 
         if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))

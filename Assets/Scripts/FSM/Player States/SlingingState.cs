@@ -46,7 +46,7 @@ public class SlingingState : State
         Vector2 targetDir = (Vector2)mousePos - (Vector2)SlingIndicator.transform.position;
         SlingIndicator.transform.up = targetDir;
 
-        if(Input.GetMouseButtonDown(0))
+        if(Player.IsSlinging && Input.GetMouseButtonDown(0))
         {
             // temp location?
             if(GetComponent<AudioCue>() != null)
@@ -67,8 +67,8 @@ public class SlingingState : State
 
         if (Player.IsGrounded)
         {
-            // Bounce mechanic
-            if (-Player.RB.velocity.y > GetComponent<SlingingState>().BounceThreshold)
+            // Old Bounce Physics
+            /*if (Player.IsSlung && -Player.RB.velocity.y > GetComponent<SlingingState>().BounceThreshold)
             {
                 Player.IsSlung = false;
 
@@ -84,16 +84,35 @@ public class SlingingState : State
                 Player.RB.velocity = bounceDirection * bouncePower;
 
                 Player.IsGrounded = false;
-                GetComponent<StateMachine>().ChangeState("Aerial");
+                //GetComponent<StateMachine>().ChangeState("Aerial");
+            }*/
+
+            //New Version
+            /*
+            if(Player.IsSlinging && Player.IsGrounded)
+            {
+                GetComponent<StateMachine>().ChangeState("Grounded");
+                Player.IsSlinging = false;
+                return;
+            }    
+            
+
+            float speed = Player.RB.velocity.magnitude;
+            
+
+            float parallel = Math.Dot(Player.RB.velocity,)
+            if (Player.IsSlung && speed > GetComponent<SlingingState>().BounceThreshold)
+            {
+                
             }
             else
             {
                 GetComponent<StateMachine>().ChangeState("Grounded");
                 Player.IsSlinging = false;
-            }
+            }*/
         }
 
-        if (!Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))
-            Player.IsSlinging = false;
+        //if (!Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))
+        //    Player.IsSlinging = false;
     }
 }

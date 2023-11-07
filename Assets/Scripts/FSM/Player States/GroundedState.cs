@@ -51,6 +51,7 @@ public class GroundedState : State
 
             Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength);
             Player.SM.ChangeState("Aerial");
+            Debug.Log("Jump");
         }
 
         //Correct me if I'm wrong but shouldn't IsSlining only be true when we are in SlingingState?
