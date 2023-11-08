@@ -179,8 +179,6 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D GroundCheckResults = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
                                        GroundCheckSize, 0, Vector3.down, 0.1f, TerrainLayer);
 
-        IsGrounded = (GroundCheckResults == true);
-
         if(GroundCheckResults.collider != null)
         {
             if (GroundCheckResults.collider.gameObject.tag == "Falling")
@@ -190,6 +188,12 @@ public class PlayerController : MonoBehaviour
                 if (GroundCheckResults.collider.gameObject.tag == "Breakable")
                     GroundCheckResults.collider.gameObject.GetComponent<BreakableBlock>().Activate();
         }
+
+        // ignore check if moving up
+        //if (RB.velocity.y <= GroundVelocityThreashold)
+        //    IsGrounded = (GroundCheckResults == true);
+
+        IsGrounded = RB.velocity.y <= GroundVelocityThreashold && (GroundCheckResults == true);
     }
 
     void FixedUpdate()
@@ -265,11 +269,12 @@ public class PlayerController : MonoBehaviour
         RB.AddForce(AddForces);
         AddForces = Vector2.Lerp(AddForces, Vector2.zero, 0.1f);
 
+        //Moved to GroundedCheck
         //Set jumping to false if we aren't
         //Ignore check if we have a non-negligable upwords velocity
-        if (RB.velocity.y <= GroundVelocityThreashold)
-            IsGrounded = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
-                                           GroundCheckSize, 0, Vector3.down, 0.1f);
+        //if (RB.velocity.y <= GroundVelocityThreashold)
+        //    IsGrounded = Physics2D.BoxCast((Vector2)transform.position + GroundCheckPos,
+        //                                   GroundCheckSize, 0, Vector3.down, 0.1f);
     }
 
     private void OnDrawGizmos()

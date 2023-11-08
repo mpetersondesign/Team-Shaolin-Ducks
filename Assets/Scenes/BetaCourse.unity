@@ -43546,6 +43546,10 @@ PrefabInstance:
       propertyPath: HomingDistance
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 687948007042493401, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
+      propertyPath: BounceThreshold
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 687948007042493404, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
       propertyPath: SlingshotAfterimage
       value: 
