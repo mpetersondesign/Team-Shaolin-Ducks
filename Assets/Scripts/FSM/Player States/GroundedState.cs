@@ -24,6 +24,7 @@ public class GroundedState : State
 
         Player.PC.size = Player.DefaultColliderSize;
         Player.PA.Play("Grounded");
+        Player.IsSlung = false;
         GetComponent<AudioCue>().PlayAudioCue(1); // plays player landing sfx, can be moved to events later
 
         Player.SlingshotSpent = false;
