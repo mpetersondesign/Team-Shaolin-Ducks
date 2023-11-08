@@ -104,7 +104,7 @@ public class SlingingState : State
             }*/
 
             //New Version
-            /*
+            
             if(Player.IsSlinging && Player.IsGrounded)
             {
                 GetComponent<StateMachine>().ChangeState("Grounded");
@@ -114,9 +114,10 @@ public class SlingingState : State
             
 
             float speed = Player.RB.velocity.magnitude;
-            
 
-            float parallel = Math.Dot(Player.RB.velocity,)
+            var groundNormal = new Vector2(0, 1);
+
+            float perp = Math.Dot(Player.RB.velocity, groundNormal);
             if (Player.IsSlung && speed > GetComponent<SlingingState>().BounceThreshold)
             {
                 
