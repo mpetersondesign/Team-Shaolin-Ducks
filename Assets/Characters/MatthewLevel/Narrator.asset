@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19f2633640a5e85468141f97195cf125, type: 3}
-  m_Name: PlayerData
+  m_Name: Narrator
   m_EditorClassIdentifier: 
-  characterName: Lily
-  portrait: {fileID: -881689364, guid: be221d521d31ed34a8d0509923308036, type: 3}
+  characterName: Narrator
+  portrait: {fileID: 21300000, guid: 8004118ba4145a74e823fedaa37acf3a, type: 3}

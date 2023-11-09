@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d484ae49a026d64e96c5601fa279ed3, type: 3}
+  m_Name: StarterDialogue
+  m_EditorClassIdentifier: 
+  Lines:
+  - Speaker: {fileID: 11400000, guid: 0bb3e6794bde89240a2a53729caef8b5, type: 2}
+    Text: Oh! <b><color=#2288cc>Lily</color></b>! You're awake!
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 0bb3e6794bde89240a2a53729caef8b5, type: 2}
+    Text: The <b><color=#22cc88>time travel spell</color></b> knocked you out.
+    NextLine: -1
+    Dialogue_Type: 0
+    Options:
+    - OptionLabel: How are you?
+      Output: 0
+      NextLine: 2
+    - OptionLabel: The machine?
+      Output: 0
+      NextLine: 0
+    - OptionLabel: Where are we?
+      Output: 0
+      NextLine: 0
+  - Speaker: {fileID: 11400000, guid: 422c80dd41ff8d843ba3847cee681540, type: 2}
+    Text: Okay, let's see...
+    NextLine: -1
+    Dialogue_Type: 1
+    Options:
+    - OptionLabel: Kelly?
+      Output: 1
+      NextLine: 3
+    - OptionLabel: Machine?
+      Output: 1
+      NextLine: 5
+    - OptionLabel: Where?
+      Output: 1
+      NextLine: 9
+  - Speaker: {fileID: 11400000, guid: 422c80dd41ff8d843ba3847cee681540, type: 2}
+    Text: Are you alright, Kelly?
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 0bb3e6794bde89240a2a53729caef8b5, type: 2}
+    Text: Yeah, I'm fine. As your familiar, your magic shields me from magical effects.
+    NextLine: 2
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 422c80dd41ff8d843ba3847cee681540, type: 2}
+    Text: Is the spell machine working?
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 0bb3e6794bde89240a2a53729caef8b5, type: 2}
+    Text: No, it seems to have broken after the spell.
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 0bb3e6794bde89240a2a53729caef8b5, type: 2}
+    Text: Worse than that, the blight of our time seems to have followed us here.
+      Just look at the vegetation!
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 422c80dd41ff8d843ba3847cee681540, type: 2}
+    Text: Oh dear!
+    NextLine: 2
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 422c80dd41ff8d843ba3847cee681540, type: 2}
+    Text: Where... or I guess when... are we?
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 0bb3e6794bde89240a2a53729caef8b5, type: 2}
+    Text: We are in the ancient past, back before the advent of spell machines.
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 422c80dd41ff8d843ba3847cee681540, type: 2}
+    Text: Then how will we get ours fixed?
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 0bb3e6794bde89240a2a53729caef8b5, type: 2}
+    Text: I can get to work on it, but I could use some <b><color=#22cc88>Spell Fragments</b></color>
+      to get it up and running.
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 0bb3e6794bde89240a2a53729caef8b5, type: 2}
+    Text: The burst of magic as we entered this time seemed to make some, so I suggest
+      asking locals about anything new.
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 422c80dd41ff8d843ba3847cee681540, type: 2}
+    Text: Alrighty! Good luck Kelly!
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []

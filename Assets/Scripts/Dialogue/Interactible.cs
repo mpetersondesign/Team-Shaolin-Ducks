@@ -62,7 +62,7 @@ public class Interactible : MonoBehaviour
 
     public void DialogueEvent(int endIndex = 0)
     {
-        if(endIndex < 0 || endIndex > dialogueEvents.Count)
+        if(endIndex < 0 || endIndex > dialogueEvents.Count-1)
         {
             return;
         }
