@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
     private void ManageParticles()
     {
-        if(SlingshotAfterimage != null)
+        if (SlingshotAfterimage != null)
         {
             var ssa = SlingshotAfterimage.emission;
             ssa.enabled = (IsSlinging || IsSlung);
@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //If we're not slinging, and we're not on the ground
-        if(!IsSlinging && !IsGrounded)
+        if (!IsSlinging && !IsGrounded)
             SM.ChangeState("Aerial"); //Switch to aerial
     }
 
@@ -177,20 +177,20 @@ public class PlayerController : MonoBehaviour
 
         IsGrounded = (GroundCheckResults == true);
 
-        if(GroundCheckResults.collider != null)
+        if (GroundCheckResults.collider != null)
         {
             if (GroundCheckResults.collider.gameObject.tag == "Falling")
                 GroundCheckResults.collider.gameObject.GetComponent<FallingBlock>().Activate();
 
-            if(IsSlung)
+            if (IsSlung)
                 if (GroundCheckResults.collider.gameObject.tag == "Breakable")
-                    GroundCheckResults.collider.gameObject.GetComponent<BreakableBlock>().Activate();
+                    GroundCheckResults.collider.gameObject.GetComponentInChildren<BreakableBlock>().Activate();
         }
     }
 
     void FixedUpdate()
     {
-        if(CanMove)
+        if (CanMove)
             MovePlayer();
     }
 
@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviour
         MoveForce = Mathf.Abs(RB.velocity.x);
 
         //If we're dashing
-        if(IsDashing)
+        if (IsDashing)
             //Then our target speed becomes our RunSpeed
             targetSpeed = H_Axis * RunSpeed;
         else //Otherwise
@@ -235,7 +235,7 @@ public class PlayerController : MonoBehaviour
             FacingDirection = -1;
 
         //If we're grounded
-        if(IsGrounded)
+        if (IsGrounded)
         {
             //Refresh our amount of jumps
             JumpsLeft = MaxJumps;
@@ -288,7 +288,7 @@ public class PlayerController : MonoBehaviour
         //Draw velocity ray
         Color velocityColor = Color.yellow;
         Gizmos.color = velocityColor;
-        if(RB != null)
+        if (RB != null)
             Gizmos.DrawLine(transform.position, transform.position + (Vector3)RB.velocity);
     }
 
