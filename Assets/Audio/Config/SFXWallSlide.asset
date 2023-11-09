@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SFXWallSlide
   m_EditorClassIdentifier: 
   mixerGroup: {fileID: 4610017029084775685, guid: 0b3dbce151dfb7a43bdd34b28aac8ad7, type: 2}
-  volume: 0.497
+  volume: 0.222
   pitch: 1
   enablePitchVariation: 0
   pitchVariation: 0
