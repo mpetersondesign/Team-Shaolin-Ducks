@@ -23,7 +23,7 @@ public class AerialState : State
 
     public override void Enter(string previous_key, State previous_state)
     {
-        Debug.Log("Enter Aerial");
+        //Debug.Log("Enter Aerial");
         hasDoubleJump = true;
     }
 
@@ -92,8 +92,18 @@ public class AerialState : State
         }
 
         //If we become grounded while aerial
-        if (Player.IsGrounded && !Player.IsJumping)
-            Player.SM.ChangeState("Grounded"); //Switch to grounded
+        if (Player.IsGrounded)
+        {
+            if (!Player.IsSlung)
+            {
+                if (!Player.IsJumping)
+                    Player.SM.ChangeState("Grounded"); //Switch to grounded
+            }
+            else
+            {
+                AfterSlingBounce();
+            }
+        }
 
         if (hasDoubleJump && Player.PI.OnPress(PlayerInputs.PlayerAction.Jump))
         {
@@ -114,5 +124,32 @@ public class AerialState : State
             Player.IsSlinging = true;
             Player.SM.ChangeState("Slinging");
         }
+    }
+
+    private void AfterSlingBounce()
+    {
+        float speed = Player.RB.velocity.magnitude;
+
+        if (speed <= GetComponent<SlingingState>().BounceThreshold)
+        {
+            Player.SM.ChangeState("Grounded");
+            return;
+        }
+
+        Player.IsSlung = false;
+
+        //temporaraly replaced with reducing speed only in perp direction so there is
+        //more horrizontal motion to counteract horrizontal acceleration dampaning
+        //can be replaced back when horrizontal acceleration dampaning is reduced/fixed
+        //speed -= GetComponent<SlingingState>().BounceThreshold;
+
+        // for some reason this doesn't work (is returning (0,0) so for a temporary solution we will assume a level ground i.e. normal = (0,1)
+        //var groundNormal = Physics2D.Raycast(transform.position, (Vector2)transform.position + Player.RB.velocity, 0.1f, Player.TerrainLayer).normal;
+        var groundNormal = new Vector2(0, 1);
+        //We want this to be a reflection of the normal being hit
+        Vector2 bounceDirection = Math.Reflect(Player.RB.velocity, groundNormal);
+        bounceDirection.Normalize();
+        Player.RB.velocity = bounceDirection * speed;
+        Player.RB.velocity -= groundNormal * GetComponent<SlingingState>().BounceThreshold;
     }
 }

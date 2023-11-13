@@ -62,7 +62,7 @@ public class SlingingState : State
 
         SlingIndicator.transform.up = targetDir;
 
-        if(Player.IsSlinging && Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0))
         {
             // temp location?
             if(GetComponent<AudioCue>() != null)
@@ -79,60 +79,8 @@ public class SlingingState : State
             {
                 SendMessage("OnSling", targetDir);
             }
+
+            Player.SM.ChangeState("Aerial");
         }
-
-        if (Player.IsGrounded)
-        { 
-
-            float speed = Player.RB.velocity.magnitude;
-
-            //var groundNormal = new Vector2(0, 1);
-            //var groundParalell = Math.RotateVec90(groundNormal);
-
-            //float perp = -Math.Dot(Player.RB.velocity, groundNormal);
-            //float paralell = Math.Dot(Player.RB.velocity, groundParalell);
-
-            if (Player.IsSlung && speed > GetComponent<SlingingState>().BounceThreshold)
-            {
-                Player.IsSlung = false;
-
-                //temporaraly replaced with reducing speed only in perp direction so there is
-                //more horrizontal motion to counteract horrizontal acceleration dampaning
-                //can be replaced back when horrizontal acceleration dampaning is reduced/fixed
-                //speed -= GetComponent<SlingingState>().BounceThreshold;
-
-                // for some reason this doesn't work (is returning (0,0) so for a temporary solution we will assume a level ground i.e. normal = (0,1)
-                //var groundNormal = Physics2D.Raycast(transform.position, (Vector2)transform.position + Player.RB.velocity, 0.1f, Player.TerrainLayer).normal;
-                var groundNormal = new Vector2(0, 1);
-                //We want this to be a reflection of the normal being hit
-                Vector2 bounceDirection = Math.Reflect(Player.RB.velocity, groundNormal);
-                bounceDirection.Normalize();
-                Player.RB.velocity = bounceDirection * speed;
-                Player.RB.velocity -= groundNormal * BounceThreshold;
-
-
-
-
-                //var perp = Math.Dot(Player.RB.velocity, groundNormal);
-                //float horizontalDampaning = 0.25f;
-                //Player.RB.velocity -= perp * horizontalDampaning * groundNormal;
-
-
-                /*float bouncePower = Mathf.Abs(Player.RB.velocity.y);
-                Mathf.Clamp(bouncePower, 0, GetComponent<SlingingState>().MaxBounceForce);
-                Player.RB.velocity = bounceDirection * bouncePower;
-                Player.IsGrounded = false;*/
-
-                GetComponent<StateMachine>().ChangeState("Aerial");
-            }
-            else
-            {
-                GetComponent<StateMachine>().ChangeState("Grounded");
-                Player.IsSlinging = false;
-            }
-        }
-
-        //if (!Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))
-        //    Player.IsSlinging = false;
     }
 }
