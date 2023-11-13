@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
 
             if(IsSlung)
                 if (GroundCheckResults.collider.gameObject.tag == "Breakable")
-                    GroundCheckResults.collider.gameObject.GetComponent<BreakableBlock>().Activate();
+                    GroundCheckResults.collider.gameObject.GetComponentInChildren<BreakableBlock>().Activate();
         }
 
         // ignore check if moving up
