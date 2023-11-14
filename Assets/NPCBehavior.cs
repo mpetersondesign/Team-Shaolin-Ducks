@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCBehavior : MonoBehaviour
 {
     public SpriteRenderer NPCSprite;
+    public bool reverseFlip = false;
 
     // Update is called once per frame
     void Update()
@@ -13,9 +14,9 @@ public class NPCBehavior : MonoBehaviour
         {
             var pc = FindObjectOfType<PlayerController>();
             if (pc.transform.position.x > transform.position.x)
-                NPCSprite.flipX = false;
+                NPCSprite.flipX = reverseFlip;
             else
-                NPCSprite.flipX = true;
+                NPCSprite.flipX = !reverseFlip;
         }
     }
 }
