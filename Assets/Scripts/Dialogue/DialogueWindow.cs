@@ -40,6 +40,8 @@ public class DialogueWindow : MonoBehaviour
     private int currentChar = 0;
     private string currentDisplayText;
     private bool scrollingText = false;
+    private float scrollCounter = 0.0f;
+    public float textSpeed = 1.0f;
 
     public void Awake()
     {
@@ -211,6 +213,13 @@ public class DialogueWindow : MonoBehaviour
         if (currentChar < currentDialogue.Lines[currentLine].Text.Length)
         {
             currentDisplayText = GetSubstring(currentDialogue.Lines[currentLine].Text);
+            scrollCounter += textSpeed * 0.5f;
+            if ((int)scrollCounter % (int)textSpeed == 0)
+            {
+                GetComponent<AudioCue>().PlayAudioCue();
+                if ((int)scrollCounter % (int)textSpeed * 2 == 0)
+                    GetComponent<AudioCue>().PlayAudioCue(1);
+            }
         }
         else
         {
