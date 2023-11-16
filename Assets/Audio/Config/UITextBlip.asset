@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47afa095800571d40adae51a7fe792bd, type: 3}
-  m_Name: UITextScroll
+  m_Name: UITextBlip
   m_EditorClassIdentifier: 
   mixerGroup: {fileID: -2649327283626601423, guid: 0b3dbce151dfb7a43bdd34b28aac8ad7, type: 2}
-  volume: 0.379
+  volume: 0.547
   pitch: 1
-  enablePitchVariation: 1
-  pitchVariation: 0.1123
+  enablePitchVariation: 0
+  pitchVariation: 0
   spatialBlend: 0
   rolloff: 0
   rolloffMin: 1

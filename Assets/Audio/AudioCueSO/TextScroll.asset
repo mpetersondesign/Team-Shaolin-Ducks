@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: TextScroll
   m_EditorClassIdentifier: 
   isLooping: 0
-  audioClips: []
-  method: 0
+  audioClips:
+  - {fileID: 8300000, guid: da6a6056868c74f4884afd1fc72f488a, type: 3}
+  - {fileID: 8300000, guid: ab47a50344430044398c6800ca5a953b, type: 3}
+  - {fileID: 8300000, guid: d3583d7b7084e6349a27bee0ea4acd47, type: 3}
+  method: 1
