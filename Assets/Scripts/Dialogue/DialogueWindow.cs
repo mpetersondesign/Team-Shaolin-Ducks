@@ -76,6 +76,7 @@ public class DialogueWindow : MonoBehaviour
 
     public void UpdateText()
     {
+        audioCue.PlayAudioCue(2);
         numChar = FindNumChar(currentDialogue.Lines[currentLine].Text);
         SetUpDisplayText();
         characterPortrait.sprite = currentDialogue.Lines[currentLine].Speaker.portrait;
@@ -114,7 +115,7 @@ public class DialogueWindow : MonoBehaviour
     {
         if (dialoguePanel.activeSelf)
         {
-            if(currentDialogue.Lines[currentLine].NextLine >= 0)
+            if (currentDialogue.Lines[currentLine].NextLine >= 0)
             {
                 currentLine = currentDialogue.Lines[currentLine].NextLine;
             }
@@ -134,6 +135,8 @@ public class DialogueWindow : MonoBehaviour
                 optionsPanel.SetActive(false);
                 FindObjectOfType<PlayerController>().CanMove = true;
                 // Let Player Move Again
+
+                audioCue.PlayAudioCue(3); // close dialogue audio
             }
         }
     }
