@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47afa095800571d40adae51a7fe792bd, type: 3}
   m_Name: UIDialogueWindow
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
-  volume: 1
+  mixerGroup: {fileID: -2649327283626601423, guid: 0b3dbce151dfb7a43bdd34b28aac8ad7, type: 2}
+  volume: 0.348
   pitch: 1
   enablePitchVariation: 0
   pitchVariation: 0

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: TextWindowClose
   m_EditorClassIdentifier: 
   isLooping: 0
-  audioClips: []
+  audioClips:
+  - {fileID: 8300000, guid: 51599259d8e2661489051fd10d103ea9, type: 3}
   method: 0

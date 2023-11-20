@@ -62452,9 +62452,13 @@ MonoBehaviour:
   audioCues:
   - {fileID: 11400000, guid: f7e65f83c4cef18429e538d9b02c6659, type: 2}
   - {fileID: 11400000, guid: d4fc6fd09c099c1459894907268d3031, type: 2}
+  - {fileID: 11400000, guid: 79563b8666843904ebbba4b54f07d947, type: 2}
+  - {fileID: 11400000, guid: 487577ba8d22275499ac6b4ca9efa6a1, type: 2}
   audioConfigs:
   - {fileID: 11400000, guid: 1fd151f4dd4ba224b9b422687caeb7e0, type: 2}
   - {fileID: 11400000, guid: ff61e0df4c0f1684691043328b2b0719, type: 2}
+  - {fileID: 11400000, guid: 6d3ca0a1445ead049b46ae76567114ac, type: 2}
+  - {fileID: 11400000, guid: 6d3ca0a1445ead049b46ae76567114ac, type: 2}
   audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1001 &1650740389
 PrefabInstance:
