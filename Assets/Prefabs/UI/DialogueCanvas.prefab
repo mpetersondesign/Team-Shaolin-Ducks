@@ -1357,6 +1357,7 @@ GameObject:
   - component: {fileID: 6742118355560692470}
   - component: {fileID: 6742118355560692469}
   - component: {fileID: 8206903442116549297}
+  - component: {fileID: -8015880377218669198}
   m_Layer: 5
   m_Name: DialogueCanvas
   m_TagString: Untagged
@@ -1465,10 +1466,36 @@ MonoBehaviour:
   characterNameDisplay: {fileID: 6742118354679503776}
   dialogueDisplay: {fileID: 6742118354753410574}
   textDelay: 1
+  scrollOverSpace: 0
   option1Display: {fileID: 2108948283}
   option2Display: {fileID: 1885434939}
   option3Display: {fileID: 2116750956}
+  audioCue: {fileID: -8015880377218669198}
   currentLine: 0
+--- !u!114 &-8015880377218669198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6742118355560692468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: f7e65f83c4cef18429e538d9b02c6659, type: 2}
+  - {fileID: 11400000, guid: d4fc6fd09c099c1459894907268d3031, type: 2}
+  - {fileID: 11400000, guid: 79563b8666843904ebbba4b54f07d947, type: 2}
+  - {fileID: 11400000, guid: 487577ba8d22275499ac6b4ca9efa6a1, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: 1fd151f4dd4ba224b9b422687caeb7e0, type: 2}
+  - {fileID: 11400000, guid: ff61e0df4c0f1684691043328b2b0719, type: 2}
+  - {fileID: 11400000, guid: 6d3ca0a1445ead049b46ae76567114ac, type: 2}
+  - {fileID: 11400000, guid: 6d3ca0a1445ead049b46ae76567114ac, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &6742118355568207150
 GameObject:
   m_ObjectHideFlags: 0
