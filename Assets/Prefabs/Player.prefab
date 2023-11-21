@@ -5517,7 +5517,7 @@ MonoBehaviour:
   IsSlung: 0
   SlingshotSpent: 0
   IsWallSliding: 0
-  AgainstWall: 0
+  AgainstWall: 50
   DefaultColliderSize: {x: 0, y: 0}
   DefaultColliderOffset: {x: 0, y: 0}
   SlingshotColliderSize: {x: 0, y: 0}
