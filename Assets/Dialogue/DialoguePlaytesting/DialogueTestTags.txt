@@ -1,0 +1,10 @@
+<b>Bold Text</b>
+
+<i>Italics Text</i>
+
+<color=#[HexValue]>Colored Text</color>
+
+Hex Values
+Blue (Character Names) - #47b6ff
+Cyan (Important Items) - #47ffd7
+Pink (Jokes)           - #f403fc

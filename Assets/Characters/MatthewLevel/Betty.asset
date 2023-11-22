@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f2633640a5e85468141f97195cf125, type: 3}
+  m_Name: Betty
+  m_EditorClassIdentifier: 
+  characterName: Betty
+  portrait: {fileID: -1374362980, guid: 2c782818179cf8c478ebd6d372d98935, type: 3}
