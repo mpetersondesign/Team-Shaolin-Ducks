@@ -23,12 +23,17 @@ public class DialogueWindow : MonoBehaviour
     public Image characterPortrait;
     public TextMeshProUGUI characterNameDisplay;
     public TextMeshProUGUI dialogueDisplay;
+    [Range(0,3)]
     public int textDelay = 1;
+    public bool scrollOverSpace = false;
     private int textDelayTimer = 0;
 
     public TextMeshProUGUI option1Display;
     public TextMeshProUGUI option2Display;
     public TextMeshProUGUI option3Display;
+
+    [SerializeField]
+    private AudioCue audioCue;
 
     private Interactible interactedActor;
     private DialogueData currentDialogue;
@@ -40,6 +45,7 @@ public class DialogueWindow : MonoBehaviour
     private int currentChar = 0;
     private string currentDisplayText;
     private bool scrollingText = false;
+    private int audioCounter = 0;
 
     public void Awake()
     {
@@ -70,6 +76,7 @@ public class DialogueWindow : MonoBehaviour
 
     public void UpdateText()
     {
+        audioCue.PlayAudioCue(2);
         numChar = FindNumChar(currentDialogue.Lines[currentLine].Text);
         SetUpDisplayText();
         characterPortrait.sprite = currentDialogue.Lines[currentLine].Speaker.portrait;
@@ -108,7 +115,7 @@ public class DialogueWindow : MonoBehaviour
     {
         if (dialoguePanel.activeSelf)
         {
-            if(currentDialogue.Lines[currentLine].NextLine >= 0)
+            if (currentDialogue.Lines[currentLine].NextLine >= 0)
             {
                 currentLine = currentDialogue.Lines[currentLine].NextLine;
             }
@@ -128,6 +135,8 @@ public class DialogueWindow : MonoBehaviour
                 optionsPanel.SetActive(false);
                 FindObjectOfType<PlayerController>().CanMove = true;
                 // Let Player Move Again
+
+                audioCue.PlayAudioCue(3); // close dialogue audio
             }
         }
     }
@@ -189,19 +198,24 @@ public class DialogueWindow : MonoBehaviour
     {
         if (scrollingText)
         {
-            if(textDelayTimer % textDelay == 0)
+            if(textDelayTimer >= textDelay)
             {
                 TextScrollUpdate();
                 dialogueDisplay.text = currentDisplayText;
-            }
-            if(textDelayTimer > textDelay)
-            {
                 textDelayTimer = 0;
             }
             else
             {
                 textDelayTimer++;
             }
+            if (audioCounter % 2 == 0 && audioCounter != 0)
+                audioCue.PlayAudioCue();
+            if (audioCounter >= 5)
+            {
+                audioCounter = 0;
+                audioCue.PlayAudioCue(1);
+            }
+            audioCounter += 1;
         }
         
     }
@@ -220,12 +234,16 @@ public class DialogueWindow : MonoBehaviour
 
     public string GetSubstring(string text)
     {
+        if (scrollOverSpace == true && text.ToCharArray()[currentChar] == ' ')
+            ++currentChar;
         if (text.ToCharArray()[currentChar] == '<')
         {
             do
             {
-                currentChar++;
-            } while (text.ToCharArray()[currentChar] != '>');
+                ++currentChar;
+            } while (text.ToCharArray()[currentChar] != '>'
+                     || text.ToCharArray()[currentChar + 1] == '<'); // added this so that multiple 
+                                                                     // modifiers didnt incur a long pause
         }
         return text.Substring(0, 1 + currentChar++);
     }

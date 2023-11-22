@@ -46,8 +46,6 @@ public class AerialState : State
             if((Player.PI.RawInput.x > 0 && Player.AgainstWall == 1) ||
                (Player.PI.RawInput.x < 0 && Player.AgainstWall == -1))
             {
-
-
                 Player.IsWallSliding = true;
 
                 //Placeholder animation (we don't want to be in our slung animation)
@@ -67,16 +65,24 @@ public class AerialState : State
                 if (audioCue != null)
                     audioCue.StartAudioCue(2, wallSlideKey);
 
-
+                if(Player.PI.IsPressed(PlayerInputs.PlayerAction.Jump))
+                {
+                    Player.RB.velocity = new Vector2((Player.PI.RawInput.x * -(Player.JumpStrength)), Player.JumpStrength);
+                    Player.IsWallSliding = false;
+                    Effects.StopWallSlideEffects();
+                    if (!Player.IsSlung)
+                        Player.PA.Play("Aerial");
+                }
             }
             else
             {
+                Player.IsWallSliding = false;
                 Effects.StopWallSlideEffects();
-
+                if(!Player.IsSlung)
+                    Player.PA.Play("Aerial");
                 if (audioCue != null)
                     audioCue.StopAudioCue(wallSlideKey, 0.2f);
                 
-                Player.IsWallSliding = false;
             }
         }
 

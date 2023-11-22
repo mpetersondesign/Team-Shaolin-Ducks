@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36bf05fd683603742a00421bfacd3227, type: 3}
+  m_Name: TextScroll
+  m_EditorClassIdentifier: 
+  isLooping: 0
+  audioClips:
+  - {fileID: 8300000, guid: da6a6056868c74f4884afd1fc72f488a, type: 3}
+  - {fileID: 8300000, guid: ab47a50344430044398c6800ca5a953b, type: 3}
+  - {fileID: 8300000, guid: d3583d7b7084e6349a27bee0ea4acd47, type: 3}
+  method: 1

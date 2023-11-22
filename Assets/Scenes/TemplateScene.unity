@@ -1884,6 +1884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCSprite: {fileID: 1437741107}
+  reverseFlip: 0
 --- !u!4 &533377423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2501752953441858498, guid: 85f323d3928a64b4e8e55e5f9ac34533, type: 3}
@@ -44310,6 +44311,10 @@ PrefabInstance:
     - target: {fileID: 687948007042493401, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
       propertyPath: HomingDistance
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 687948007042493404, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
+      propertyPath: WallDetectorLength
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 687948007042493404, guid: 29de6a121150e7e4f8f3ffc55d284a36, type: 3}
       propertyPath: SlingshotAfterimage

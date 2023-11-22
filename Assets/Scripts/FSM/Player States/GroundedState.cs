@@ -46,22 +46,25 @@ public class GroundedState : State
             Player.RB.AddForce(bounceDirection * bouncePower, ForceMode2D.Impulse);
         } */
         
-        if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Jump))
+        if(Player.CanMove)
         {
-            Player.IsJumping = true;
-            Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength);
-        }
+            if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Jump))
+            {
+                Player.IsJumping = true;
+                Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength);
+            }
 
-        if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))
-        {
-            Player.IsDashing = true;
-            Effects.StartDashEffects();
-        }
-        else
-        {
-            Player.IsDashing = false;
-            Player.DashBurstSpent = false;
-            Effects.StopDashEffects();
+            if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Dash))
+            {
+                Player.IsDashing = true;
+                Effects.StartDashEffects();
+            }
+            else
+            {
+                Player.IsDashing = false;
+                Player.DashBurstSpent = false;
+                Effects.StopDashEffects();
+            }
         }
 
     }
