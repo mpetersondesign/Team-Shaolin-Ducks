@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d484ae49a026d64e96c5601fa279ed3, type: 3}
+  m_Name: WallJumpGuide
+  m_EditorClassIdentifier: 
+  Lines:
+  - Speaker: {fileID: 11400000, guid: 51bc1ad2c55e1b54cb233896354e08f2, type: 2}
+    Text: If you move into a wall while airborne you will initiate a <b>Wallslide</b>.
+    NextLine: -1
+    Dialogue_Type: 0
+    Options: []
+  - Speaker: {fileID: 11400000, guid: 51bc1ad2c55e1b54cb233896354e08f2, type: 2}
+    Text: 'Try pressing the <b>Jump</b> button while preforming a <b>Wallslide</b>. '
+    NextLine: 2
+    Dialogue_Type: 0
+    Options: []
