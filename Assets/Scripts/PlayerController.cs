@@ -292,11 +292,11 @@ public class PlayerController : MonoBehaviour
             Gizmos.DrawLine(transform.position, transform.position + (Vector3)RB.velocity);
     }
 
-    void OnGUI()
-    {
-        GUI.Box(new Rect(10, 10, 200, 25), "State: " + SM.CurrentState.Key);
-        GUI.Box(new Rect(10, 35, 200, 25), "Dashing: " + IsDashing);
-        GUI.Box(new Rect(10, 60, 200, 25), "Jumping: " + IsJumping);
-        GUI.Box(new Rect(10, 85, 200, 25), "Slung: " + IsSlung);
-    }
+    //void OnGUI()
+    //{
+    //    GUI.Box(new Rect(10, 10, 200, 25), "State: " + SM.CurrentState.Key);
+    //    GUI.Box(new Rect(10, 35, 200, 25), "Dashing: " + IsDashing);
+    //    GUI.Box(new Rect(10, 60, 200, 25), "Jumping: " + IsJumping);
+    //    GUI.Box(new Rect(10, 85, 200, 25), "Slung: " + IsSlung);
+    //}
 }
