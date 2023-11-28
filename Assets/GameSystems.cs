@@ -17,7 +17,7 @@ public class GameSystems : MonoBehaviour
     public TextMeshProUGUI JasonBestOrbsText;
     public TextMeshProUGUI OrbsCollectedText;
     public float JasonBestTime;
-    public float JasonBestOrbs;
+    public int JasonBestOrbs;
     public float MatthewBestTime;
     public float Timer;
     public bool TimerEnabled;
@@ -35,7 +35,13 @@ public class GameSystems : MonoBehaviour
 
     public void StartTimer(GameLevel level)
     {
-        CurrentOrbs = 0;
+        switch(level)
+        {
+            case GameLevel.Jason:
+                CurrentOrbs = JasonBestOrbs;
+                break;
+        }
+
         Timer = 0f;
         TimerEnabled = true;
         TimerText.gameObject.SetActive(true);
@@ -85,7 +91,10 @@ public class GameSystems : MonoBehaviour
                     }
 
                     if (CurrentOrbs > JasonBestOrbs)
+                    {
                         JasonBestOrbsText.text = $"Orbs Collected: {CurrentOrbs}";
+                        JasonBestOrbs = CurrentOrbs;
+                    }
 
                     return;
                 }
