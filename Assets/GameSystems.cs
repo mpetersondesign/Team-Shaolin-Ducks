@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class GameSystems : MonoBehaviour
 {
@@ -27,8 +28,14 @@ public class GameSystems : MonoBehaviour
         AreaChange("Hub Area");
     }
 
+    public void OrbCollect()
+    {
+        CurrentOrbs++;
+    }
+
     public void StartTimer(GameLevel level)
     {
+        CurrentOrbs = 0;
         Timer = 0f;
         TimerEnabled = true;
         TimerText.gameObject.SetActive(true);
@@ -51,6 +58,8 @@ public class GameSystems : MonoBehaviour
         {
             Timer += Time.deltaTime;
             TimerText.text = $"{ReturnTimer(Timer)}";
+            OrbsCollectedText.text = $"X{CurrentOrbs}";
+
         }
     }
 
