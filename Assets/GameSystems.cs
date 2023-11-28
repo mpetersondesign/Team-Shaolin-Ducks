@@ -8,14 +8,19 @@ using TMPro;
 public class GameSystems : MonoBehaviour
 {
     public GameObject HUD;
+    public GameObject OrbReadout;
     public TextMeshProUGUI TimerText;
     public TextMeshProUGUI AreaText;
     public TextMeshProUGUI BestTimeText;
-    public TextMeshProUGUI JasonBestText;
+    public TextMeshProUGUI JasonBestTimeText;
+    public TextMeshProUGUI JasonBestOrbsText;
+    public TextMeshProUGUI OrbsCollectedText;
     public float JasonBestTime;
+    public float JasonBestOrbs;
     public float MatthewBestTime;
     public float Timer;
     public bool TimerEnabled;
+    public int CurrentOrbs;
 
     private void Start()
     {
@@ -28,12 +33,13 @@ public class GameSystems : MonoBehaviour
         TimerEnabled = true;
         TimerText.gameObject.SetActive(true);
         BestTimeText.gameObject.SetActive(true);
+        OrbReadout.SetActive(true);
         switch(level)
         {
             case GameLevel.Jason:
                 {
                     if (JasonBestTime > 0f)
-                        BestTimeText.text = JasonBestText.text;
+                        BestTimeText.text = JasonBestTimeText.text;
                     return;
                 }
         }
@@ -58,7 +64,7 @@ public class GameSystems : MonoBehaviour
         TimerEnabled = false;
         TimerText.gameObject.SetActive(false);
         BestTimeText.gameObject.SetActive(false);
-
+        OrbReadout.SetActive(false);
         switch (level)
         {
             case GameLevel.Jason:
@@ -66,8 +72,11 @@ public class GameSystems : MonoBehaviour
                     if (Timer < JasonBestTime || JasonBestTime == 0)
                     { 
                         JasonBestTime = Timer;
-                        JasonBestText.text = $"Best Time: {ReturnTimer(JasonBestTime)}";
+                        JasonBestTimeText.text = $"Best Time: {ReturnTimer(JasonBestTime)}";
                     }
+
+                    if (CurrentOrbs > JasonBestOrbs)
+                        JasonBestOrbsText.text = $"Orbs Collected: {CurrentOrbs}";
 
                     return;
                 }
