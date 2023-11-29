@@ -5003,5 +5003,5 @@ MonoBehaviour:
   audioCues:
   - {fileID: 11400000, guid: ffbcbc698bebe354eb559a91f3a96fd6, type: 2}
   audioConfigs:
-  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  - {fileID: 11400000, guid: 866c25c3e8d06a04585c0abb2cccaace, type: 2}
   audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}

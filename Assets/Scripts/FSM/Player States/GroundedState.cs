@@ -50,6 +50,8 @@ public class GroundedState : State
         {
             if (Player.PI.IsPressed(PlayerInputs.PlayerAction.Jump))
             {
+                if (Player.IsJumping != true)
+                    GetComponent<AudioCue>().PlayAudioCue(3);
                 Player.IsJumping = true;
                 Player.RB.velocity = new Vector2(Player.RB.velocity.x, Player.JumpStrength);
             }

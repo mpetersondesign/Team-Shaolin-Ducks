@@ -11,6 +11,7 @@ public class CollectOrb : MonoBehaviour
         {
             FindObjectOfType<GameSystems>().OrbCollect();
             Instantiate(CollectParticles, transform.position, Quaternion.identity);
+            GetComponent<AudioCue>().PlayAudioCue();
             Destroy(this.gameObject);
         }
     }

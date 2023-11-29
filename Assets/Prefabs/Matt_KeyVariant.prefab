@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4214491204266199426}
   - component: {fileID: 7340250946540857735}
   - component: {fileID: 8490351474542165493}
+  - component: {fileID: 199546150799427212}
   m_Layer: 0
   m_Name: Matt_KeyVariant
   m_TagString: Key
@@ -159,3 +160,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &199546150799427212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3632808182680665888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 050cb0a66541b2148afa2e83c3a67651, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: 99b197af0c37851408ccc58dbbd54480, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}

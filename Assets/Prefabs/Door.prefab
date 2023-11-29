@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 136223932580935491}
   - component: {fileID: 136223932580935517}
   - component: {fileID: 136223932580935516}
+  - component: {fileID: 5941820964398617199}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -472,9 +473,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Activatable: 0
+  Locked: 0
+  Lock: {fileID: 0}
   DestinationDoor: {fileID: 0}
   ScreenFader: {fileID: 0}
   InteractIndicator: {fileID: 136223932288584845}
+  audioCue: {fileID: 5941820964398617199}
 --- !u!61 &136223932580935517
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -522,3 +526,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5941820964398617199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136223932580935519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: d24e904677b0f8841a028bafe8086039, type: 2}
+  - {fileID: 11400000, guid: 472ca7d27d404184eb1764d448da6930, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: ff08a1e631998ac4ebb0808742558e17, type: 2}
+  - {fileID: 11400000, guid: ff08a1e631998ac4ebb0808742558e17, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
