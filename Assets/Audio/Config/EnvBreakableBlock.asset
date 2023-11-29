@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnvBreakableBlock
   m_EditorClassIdentifier: 
   mixerGroup: {fileID: 4610017029084775685, guid: 0b3dbce151dfb7a43bdd34b28aac8ad7, type: 2}
-  volume: 1
+  volume: 0.939
   pitch: 1
   enablePitchVariation: 1
   pitchVariation: 0.2
