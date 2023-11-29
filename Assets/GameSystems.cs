@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class GameSystems : MonoBehaviour
 {
@@ -13,36 +14,54 @@ public class GameSystems : MonoBehaviour
     public TextMeshProUGUI AreaText;
     public TextMeshProUGUI BestTimeText;
     public TextMeshProUGUI JasonBestTimeText;
-    public TextMeshProUGUI JasonBestOrbsText;
+    public TextMeshProUGUI JasonBestOrbsText;    
+    public TextMeshProUGUI MattBestTimeText;
+    public TextMeshProUGUI MattBestOrbsText;
     public TextMeshProUGUI OrbsCollectedText;
     public float JasonBestTime;
-    public float JasonBestOrbs;
-    public float MatthewBestTime;
+    public int JasonBestOrbs;
+    public float MattBestTime;
+    public int  MattBestOrbs;
     public float Timer;
     public bool TimerEnabled;
     public int CurrentOrbs;
+    public LevelRespawner JasonLevel;
+    public LevelRespawner MattLevel;
 
     private void Start()
     {
         AreaChange("Hub Area");
     }
 
+    public void OrbCollect()
+    {
+        CurrentOrbs++;
+    }
+
     public void StartTimer(GameLevel level)
     {
+        switch(level)
+        {
+            case GameLevel.Jason:
+                CurrentOrbs = JasonBestOrbs;
+                JasonLevel.RespawnEntities();
+                if (JasonBestTime > 0f)
+                    BestTimeText.text = JasonBestTimeText.text;
+                break;
+            
+            case GameLevel.Matt:
+                CurrentOrbs = MattBestOrbs;
+                MattLevel.RespawnEntities();
+                if (MattBestTime > 0f)
+                    BestTimeText.text = MattBestTimeText.text;
+                break;
+        }
+
         Timer = 0f;
         TimerEnabled = true;
         TimerText.gameObject.SetActive(true);
         BestTimeText.gameObject.SetActive(true);
         OrbReadout.SetActive(true);
-        switch(level)
-        {
-            case GameLevel.Jason:
-                {
-                    if (JasonBestTime > 0f)
-                        BestTimeText.text = JasonBestTimeText.text;
-                    return;
-                }
-        }
     }
 
     public void Update()
@@ -51,6 +70,8 @@ public class GameSystems : MonoBehaviour
         {
             Timer += Time.deltaTime;
             TimerText.text = $"{ReturnTimer(Timer)}";
+            OrbsCollectedText.text = $"X{CurrentOrbs}";
+
         }
     }
 
@@ -65,6 +86,7 @@ public class GameSystems : MonoBehaviour
         TimerText.gameObject.SetActive(false);
         BestTimeText.gameObject.SetActive(false);
         OrbReadout.SetActive(false);
+
         switch (level)
         {
             case GameLevel.Jason:
@@ -76,7 +98,27 @@ public class GameSystems : MonoBehaviour
                     }
 
                     if (CurrentOrbs > JasonBestOrbs)
+                    {
                         JasonBestOrbsText.text = $"Orbs Collected: {CurrentOrbs}";
+                        JasonBestOrbs = CurrentOrbs;
+                    }
+
+                    return;
+                }
+            
+            case GameLevel.Matt:
+                {
+                    if (Timer < MattBestTime || MattBestTime == 0)
+                    {
+                        MattBestTime = Timer;
+                        MattBestTimeText.text = $"Best Time: {ReturnTimer(MattBestTime)}";
+                    }
+
+                    if (CurrentOrbs > JasonBestOrbs)
+                    {
+                        MattBestOrbsText.text = $"Orbs Collected: {CurrentOrbs}";
+                        MattBestOrbs = CurrentOrbs;
+                    }
 
                     return;
                 }

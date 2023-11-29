@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum TriggerType { Start, End }
-public enum GameLevel { Jason, Matthew, Matt }
+public enum GameLevel { Jason, Alex, Matt }
 public class LevelTrigger : MonoBehaviour
 {
     public TriggerType Type;
@@ -12,6 +12,7 @@ public class LevelTrigger : MonoBehaviour
     public LevelTrigger EndTrigger;
     public bool LevelStarted = false;
     public Vector3 PlayerReturnPos;
+    public string LevelName;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,7 +21,7 @@ public class LevelTrigger : MonoBehaviour
             LevelStarted = true;
             EndTrigger.LevelStarted = true;
             FindObjectOfType<GameSystems>().StartTimer(Level);
-            FindObjectOfType<GameSystems>().AreaChange("Jason's Level");
+            FindObjectOfType<GameSystems>().AreaChange(LevelName);
         }
 
         if (collision.tag == "Player" && LevelStarted && Type == TriggerType.End)
