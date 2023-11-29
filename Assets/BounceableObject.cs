@@ -16,7 +16,8 @@ public class BounceableObject : MonoBehaviour
             var PC = collision.gameObject.GetComponent<PlayerController>();
             if (PC.IsSlung == true)
             {
-                audioCue.PlayAudioCue(0);
+                if(audioCue != null)
+                    audioCue.PlayAudioCue(0);
                 PC.RB.velocity = new Vector2(PC.RB.velocity.x * (1 - HorizontalDampening), 0f);
                 PC.RB.AddForce(Vector2.up * 15f, ForceMode2D.Impulse);
                 if (DestroyParticles != null)
