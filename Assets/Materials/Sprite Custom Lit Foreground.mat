@@ -64,7 +64,7 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _MaskEdgeWidth: 1
-    - _MaskSize: 0
+    - _MaskSize: 0.0038121007
     m_Colors:
     - _AmbientColor: {r: 0.1, g: 0.1, b: 0.1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

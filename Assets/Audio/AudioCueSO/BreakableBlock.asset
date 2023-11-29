@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36bf05fd683603742a00421bfacd3227, type: 3}
+  m_Name: BreakableBlock
+  m_EditorClassIdentifier: 
+  isLooping: 0
+  audioClips:
+  - {fileID: 8300000, guid: 44b13d50e3435be479bc6b21e16f79dd, type: 3}
+  - {fileID: 8300000, guid: 5162ae4a2fad3684da7ed4cb1292831a, type: 3}
+  method: 0

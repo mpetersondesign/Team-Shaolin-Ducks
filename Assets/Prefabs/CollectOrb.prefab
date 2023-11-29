@@ -173,6 +173,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7528690809661468940}
   - component: {fileID: 7528690809661468941}
+  - component: {fileID: -4028816626643501063}
+  - component: {fileID: 5195058596943163268}
+  - component: {fileID: 6406983175967506312}
   m_Layer: 0
   m_Name: CollectOrb
   m_TagString: Untagged
@@ -217,3 +220,50 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4028816626643501063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528690809661468942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e82f1b121980204b987476ae0939ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectParticles: {fileID: 4332683421383822812, guid: 535b170a38abfe0458ee52dbfa8ad299, type: 3}
+--- !u!58 &5195058596943163268
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528690809661468942}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
+--- !u!114 &6406983175967506312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528690809661468942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 61e391c705683c748977276355295b05, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: 99b197af0c37851408ccc58dbbd54480, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}

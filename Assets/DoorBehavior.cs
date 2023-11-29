@@ -6,13 +6,17 @@ using UnityEngine;
 public class DoorBehavior : MonoBehaviour
 {
     public bool Activatable;
+    public bool Locked;
+    public GameObject Lock;
     public DoorBehavior DestinationDoor;
     public Animator ScreenFader;
     Animator DA;
     public GameObject InteractIndicator;
+    public AudioCue audioCue;
 
     private void Start()
     {
+        InteractIndicator.SetActive(false);
         Activatable = false;
         DA = GetComponent<Animator>();
     }
@@ -23,6 +27,13 @@ public class DoorBehavior : MonoBehaviour
         {
             Activatable = true;
             InteractIndicator.SetActive(true);
+        }
+
+        if(collision.tag == "Key" && Locked == true)
+        {
+            Locked = false;
+            Lock.SetActive(false);
+            Destroy(collision.gameObject);
         }
     }
 
@@ -42,7 +53,7 @@ public class DoorBehavior : MonoBehaviour
 
     private void GetInputs()
     {
-        if (Activatable && Input.GetKeyDown(KeyCode.E))
+        if (Activatable && Input.GetKeyDown(KeyCode.E) && Locked == false)
         {
             FindObjectOfType<PlayerController>().CanMove = false;
             FindObjectOfType<PlayerController>().RB.velocity = Vector3.zero;

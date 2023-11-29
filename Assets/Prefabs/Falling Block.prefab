@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8123542099964447933}
   - component: {fileID: 5957835081306460538}
   - component: {fileID: 1973480429337692409}
+  - component: {fileID: -7963115639782575294}
   m_Layer: 3
   m_Name: Falling Block
   m_TagString: Falling
@@ -4986,3 +4987,21 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-7963115639782575294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8123542099964447921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: ffbcbc698bebe354eb559a91f3a96fd6, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: 866c25c3e8d06a04585c0abb2cccaace, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}

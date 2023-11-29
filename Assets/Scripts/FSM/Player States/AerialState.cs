@@ -70,6 +70,8 @@ public class AerialState : State
                     Player.RB.velocity = new Vector2((Player.PI.RawInput.x * -(Player.JumpStrength)), Player.JumpStrength);
                     Player.IsWallSliding = false;
                     Effects.StopWallSlideEffects();
+                    audioCue.StopAudioCue(wallSlideKey, 0.2f);
+                    audioCue.PlayAudioCue(3);
                     if (!Player.IsSlung)
                         Player.PA.Play("Aerial");
                 }
