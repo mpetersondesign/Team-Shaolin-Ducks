@@ -70,6 +70,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _MaskPosition: {r: 0, g: 0, b: 0, a: 0}
-    - _PlayerPos: {r: -181.78975, g: 61.970757, b: 0.007587984, a: 0}
+    - _PlayerPos: {r: -16.798122, g: -147.06891, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

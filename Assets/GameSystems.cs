@@ -22,6 +22,7 @@ public class GameSystems : MonoBehaviour
     public float Timer;
     public bool TimerEnabled;
     public int CurrentOrbs;
+    public LevelRespawner JasonLevel;
 
     private void Start()
     {
@@ -39,6 +40,9 @@ public class GameSystems : MonoBehaviour
         {
             case GameLevel.Jason:
                 CurrentOrbs = JasonBestOrbs;
+                JasonLevel.RespawnEntities();
+                if (JasonBestTime > 0f)
+                    BestTimeText.text = JasonBestTimeText.text;
                 break;
         }
 
@@ -47,15 +51,6 @@ public class GameSystems : MonoBehaviour
         TimerText.gameObject.SetActive(true);
         BestTimeText.gameObject.SetActive(true);
         OrbReadout.SetActive(true);
-        switch(level)
-        {
-            case GameLevel.Jason:
-                {
-                    if (JasonBestTime > 0f)
-                        BestTimeText.text = JasonBestTimeText.text;
-                    return;
-                }
-        }
     }
 
     public void Update()
