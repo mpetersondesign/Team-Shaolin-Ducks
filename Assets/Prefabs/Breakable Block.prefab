@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5358914278577460616}
   - component: {fileID: 3720774985329857537}
   - component: {fileID: 2276970605479057063}
+  - component: {fileID: 2147010794568240474}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Breakable
@@ -72,6 +73,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &2147010794568240474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115517566388397327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 2db47fc708840f44880739cb69377563, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: 2d40eefb9552b7a4fbb24d52a2ea295e, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &7975217634051416577
 GameObject:
   m_ObjectHideFlags: 0

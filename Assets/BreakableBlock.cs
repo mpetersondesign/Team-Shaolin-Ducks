@@ -9,6 +9,7 @@ public class BreakableBlock : MonoBehaviour
     public void Activate()
     {
         Instantiate(BreakEffect, transform.position, Quaternion.identity);
+        GetComponent<AudioCue>().PlayAudioCue();
         Destroy(transform.parent.gameObject);
     }
 }

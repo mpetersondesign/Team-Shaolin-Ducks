@@ -21,7 +21,10 @@ public class KeyCollectable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && Collected == false)
+        {
+            GetComponent<AudioCue>().PlayAudioCue();
             Collected = true;
+        }
     }
 }

@@ -12,6 +12,7 @@ public class DoorBehavior : MonoBehaviour
     public Animator ScreenFader;
     Animator DA;
     public GameObject InteractIndicator;
+    public AudioCue audioCue;
 
     private void Start()
     {
