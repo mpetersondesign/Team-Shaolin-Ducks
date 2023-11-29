@@ -72,7 +72,14 @@ public class FadeHandler : MonoBehaviour
         {
             if (timer < 0)
             {
-                SceneManager.LoadScene(nextScene);
+                if(nextScene == "Exit")
+                {
+                    Application.Quit();
+                }
+                else
+                {
+                    SceneManager.LoadScene(nextScene);
+                }
             }
             else
             {
