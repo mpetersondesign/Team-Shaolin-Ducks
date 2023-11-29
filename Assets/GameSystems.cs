@@ -14,15 +14,19 @@ public class GameSystems : MonoBehaviour
     public TextMeshProUGUI AreaText;
     public TextMeshProUGUI BestTimeText;
     public TextMeshProUGUI JasonBestTimeText;
-    public TextMeshProUGUI JasonBestOrbsText;
+    public TextMeshProUGUI JasonBestOrbsText;    
+    public TextMeshProUGUI MattBestTimeText;
+    public TextMeshProUGUI MattBestOrbsText;
     public TextMeshProUGUI OrbsCollectedText;
     public float JasonBestTime;
     public int JasonBestOrbs;
-    public float MatthewBestTime;
+    public float MattBestTime;
+    public int  MattBestOrbs;
     public float Timer;
     public bool TimerEnabled;
     public int CurrentOrbs;
     public LevelRespawner JasonLevel;
+    public LevelRespawner MattLevel;
 
     private void Start()
     {
@@ -43,6 +47,13 @@ public class GameSystems : MonoBehaviour
                 JasonLevel.RespawnEntities();
                 if (JasonBestTime > 0f)
                     BestTimeText.text = JasonBestTimeText.text;
+                break;
+            
+            case GameLevel.Matt:
+                CurrentOrbs = MattBestOrbs;
+                MattLevel.RespawnEntities();
+                if (MattBestTime > 0f)
+                    BestTimeText.text = MattBestTimeText.text;
                 break;
         }
 
@@ -75,6 +86,7 @@ public class GameSystems : MonoBehaviour
         TimerText.gameObject.SetActive(false);
         BestTimeText.gameObject.SetActive(false);
         OrbReadout.SetActive(false);
+
         switch (level)
         {
             case GameLevel.Jason:
@@ -89,6 +101,23 @@ public class GameSystems : MonoBehaviour
                     {
                         JasonBestOrbsText.text = $"Orbs Collected: {CurrentOrbs}";
                         JasonBestOrbs = CurrentOrbs;
+                    }
+
+                    return;
+                }
+            
+            case GameLevel.Matt:
+                {
+                    if (Timer < MattBestTime || MattBestTime == 0)
+                    {
+                        MattBestTime = Timer;
+                        MattBestTimeText.text = $"Best Time: {ReturnTimer(MattBestTime)}";
+                    }
+
+                    if (CurrentOrbs > JasonBestOrbs)
+                    {
+                        MattBestOrbsText.text = $"Orbs Collected: {CurrentOrbs}";
+                        MattBestOrbs = CurrentOrbs;
                     }
 
                     return;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum TriggerType { Start, End }
-public enum GameLevel { Jason, Matthew, Matt }
+public enum GameLevel { Jason, Alex, Matt }
 public class LevelTrigger : MonoBehaviour
 {
     public TriggerType Type;
