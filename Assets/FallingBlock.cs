@@ -13,6 +13,9 @@ public class FallingBlock : MonoBehaviour
     {
         if (!Activated)
         {
+
+            // play audio
+            GetComponent<AudioCue>().PlayAudioCue();
             StartCoroutine(nameof(Rumble));
             Invoke("StartFalling", FallDelay);
             Activated = true;
@@ -41,5 +44,6 @@ public class FallingBlock : MonoBehaviour
 
         // enable particles
         GetComponent<ParticleSystem>().Play();
+
     }
 }
