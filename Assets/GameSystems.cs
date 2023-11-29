@@ -17,16 +17,21 @@ public class GameSystems : MonoBehaviour
     public TextMeshProUGUI JasonBestOrbsText;    
     public TextMeshProUGUI MattBestTimeText;
     public TextMeshProUGUI MattBestOrbsText;
+    public TextMeshProUGUI AlexBestTimeText;
+    public TextMeshProUGUI AlexBestOrbsText;
     public TextMeshProUGUI OrbsCollectedText;
     public float JasonBestTime;
     public int JasonBestOrbs;
     public float MattBestTime;
-    public int  MattBestOrbs;
+    public int  MattBestOrbs;    
+    public float AlexBestTime;
+    public int  AlexBestOrbs;
     public float Timer;
     public bool TimerEnabled;
     public int CurrentOrbs;
     public LevelRespawner JasonLevel;
     public LevelRespawner MattLevel;
+    public LevelRespawner AlexLevel;
 
     private void Start()
     {
@@ -54,6 +59,13 @@ public class GameSystems : MonoBehaviour
                 MattLevel.RespawnEntities();
                 if (MattBestTime > 0f)
                     BestTimeText.text = MattBestTimeText.text;
+                break;
+            
+            case GameLevel.Alex:
+                CurrentOrbs = AlexBestOrbs;
+                AlexLevel.RespawnEntities();
+                if (AlexBestTime > 0f)
+                    BestTimeText.text = AlexBestTimeText.text;
                 break;
         }
 
@@ -114,10 +126,27 @@ public class GameSystems : MonoBehaviour
                         MattBestTimeText.text = $"Best Time: {ReturnTimer(MattBestTime)}";
                     }
 
-                    if (CurrentOrbs > JasonBestOrbs)
+                    if (CurrentOrbs > MattBestOrbs)
                     {
                         MattBestOrbsText.text = $"Orbs Collected: {CurrentOrbs}";
                         MattBestOrbs = CurrentOrbs;
+                    }
+
+                    return;
+                }
+            
+            case GameLevel.Alex:
+                {
+                    if (Timer < AlexBestTime || AlexBestTime == 0)
+                    {
+                        AlexBestTime = Timer;
+                        AlexBestTimeText.text = $"Best Time: {ReturnTimer(AlexBestTime)}";
+                    }
+
+                    if (CurrentOrbs > AlexBestOrbs)
+                    {
+                        AlexBestOrbsText.text = $"Orbs Collected: {CurrentOrbs}";
+                        AlexBestOrbs = CurrentOrbs;
                     }
 
                     return;
