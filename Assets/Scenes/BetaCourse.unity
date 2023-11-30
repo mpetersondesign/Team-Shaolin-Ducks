@@ -5715,6 +5715,7 @@ GameObject:
   - component: {fileID: 403420577}
   - component: {fileID: 403420576}
   - component: {fileID: 403420575}
+  - component: {fileID: 403420580}
   m_Layer: 0
   m_Name: Enemy (4)
   m_TagString: Enemy
@@ -5852,6 +5853,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &403420580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403420574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1001 &407817466
 PrefabInstance:
   m_ObjectHideFlags: 0
