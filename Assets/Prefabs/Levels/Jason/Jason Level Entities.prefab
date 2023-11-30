@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3040896377244302708}
   - component: {fileID: 8655661724532741612}
   - component: {fileID: 939392869348120451}
+  - component: {fileID: 6720533902223613253}
   m_Layer: 0
   m_Name: Enemy (11)
   m_TagString: Enemy
@@ -50,6 +51,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 6720533902223613253}
 --- !u!212 &3040896377244302708
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -149,6 +151,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6720533902223613253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355505372443009306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &2208079640762995605
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +182,7 @@ GameObject:
   - component: {fileID: 371573111424424403}
   - component: {fileID: 5372087717206544759}
   - component: {fileID: 2111089100389953980}
+  - component: {fileID: 8626006147195689449}
   m_Layer: 0
   m_Name: Enemy (14)
   m_TagString: Enemy
@@ -199,6 +220,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 8626006147195689449}
 --- !u!212 &371573111424424403
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -298,6 +320,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8626006147195689449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2208079640762995605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &2222709109231708307
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +351,7 @@ GameObject:
   - component: {fileID: 2715678297192103750}
   - component: {fileID: 5712758311482822733}
   - component: {fileID: 4071191469730223369}
+  - component: {fileID: 4004435015309774292}
   m_Layer: 0
   m_Name: Enemy (17)
   m_TagString: Enemy
@@ -348,6 +389,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 4004435015309774292}
 --- !u!212 &2715678297192103750
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -447,6 +489,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4004435015309774292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2222709109231708307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &2764536726470321548
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +520,7 @@ GameObject:
   - component: {fileID: 8376090145525943650}
   - component: {fileID: 5161543132522641485}
   - component: {fileID: 9115276343513090151}
+  - component: {fileID: 4950263484837134677}
   m_Layer: 0
   m_Name: Enemy (12)
   m_TagString: Enemy
@@ -497,6 +558,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 4950263484837134677}
 --- !u!212 &8376090145525943650
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -596,6 +658,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4950263484837134677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2764536726470321548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &3389451068153652939
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +689,7 @@ GameObject:
   - component: {fileID: 7932543981699589096}
   - component: {fileID: 410244087093116337}
   - component: {fileID: 3032160069517082256}
+  - component: {fileID: 3962348869328585619}
   m_Layer: 0
   m_Name: Enemy (15)
   m_TagString: Enemy
@@ -646,6 +727,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 3962348869328585619}
 --- !u!212 &7932543981699589096
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -745,6 +827,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3962348869328585619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3389451068153652939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &3503763455299548362
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +858,7 @@ GameObject:
   - component: {fileID: 8120658043386293748}
   - component: {fileID: 73415061652414264}
   - component: {fileID: 4797836018027685382}
+  - component: {fileID: 5581601341401946539}
   m_Layer: 0
   m_Name: Enemy (10)
   m_TagString: Enemy
@@ -795,6 +896,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 5581601341401946539}
 --- !u!212 &8120658043386293748
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -894,6 +996,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5581601341401946539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503763455299548362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &3611502572701149834
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +1027,7 @@ GameObject:
   - component: {fileID: 1006498383747203992}
   - component: {fileID: 4296501686388807063}
   - component: {fileID: 575330993321626884}
+  - component: {fileID: 4373650636479392827}
   m_Layer: 0
   m_Name: Enemy (19)
   m_TagString: Enemy
@@ -944,6 +1065,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 4373650636479392827}
 --- !u!212 &1006498383747203992
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1043,6 +1165,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4373650636479392827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611502572701149834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &4635807845073233100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,6 +1315,7 @@ GameObject:
   - component: {fileID: 2529524246303587189}
   - component: {fileID: 9145015577556789299}
   - component: {fileID: 9038209855544736300}
+  - component: {fileID: 8806955932564826493}
   m_Layer: 0
   m_Name: Enemy (16)
   m_TagString: Enemy
@@ -1212,6 +1353,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 8806955932564826493}
 --- !u!212 &2529524246303587189
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1311,6 +1453,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8806955932564826493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5676172441018707586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &6703193620454300316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,6 +1484,7 @@ GameObject:
   - component: {fileID: 439397522999884693}
   - component: {fileID: 8549960044638695819}
   - component: {fileID: 614780895618861821}
+  - component: {fileID: 1367324724310735288}
   m_Layer: 0
   m_Name: Enemy (13)
   m_TagString: Enemy
@@ -1361,6 +1522,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 1367324724310735288}
 --- !u!212 &439397522999884693
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1460,6 +1622,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1367324724310735288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703193620454300316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &8240534846192167804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,6 +1653,7 @@ GameObject:
   - component: {fileID: 8240534846192167793}
   - component: {fileID: 8240534846192167806}
   - component: {fileID: 8240534846192167807}
+  - component: {fileID: 3467540457657922539}
   m_Layer: 0
   m_Name: Enemy (7)
   m_TagString: Enemy
@@ -1510,6 +1691,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 3467540457657922539}
 --- !u!212 &8240534846192167793
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1609,6 +1791,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3467540457657922539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8240534846192167804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &8240534846222549828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,6 +1822,7 @@ GameObject:
   - component: {fileID: 8240534846222549849}
   - component: {fileID: 8240534846222549830}
   - component: {fileID: 8240534846222549831}
+  - component: {fileID: 2462619839528253903}
   m_Layer: 0
   m_Name: Enemy (6)
   m_TagString: Enemy
@@ -1659,6 +1860,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 2462619839528253903}
 --- !u!212 &8240534846222549849
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1758,6 +1960,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2462619839528253903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8240534846222549828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &8240534846768971393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,6 +1991,7 @@ GameObject:
   - component: {fileID: 8240534846768971394}
   - component: {fileID: 8240534846768971395}
   - component: {fileID: 8240534846768971392}
+  - component: {fileID: 3578606929670895595}
   m_Layer: 0
   m_Name: Enemy (5)
   m_TagString: Enemy
@@ -1808,6 +2029,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 3578606929670895595}
 --- !u!212 &8240534846768971394
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1907,6 +2129,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3578606929670895595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8240534846768971393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &8354917970325541883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,6 +2160,7 @@ GameObject:
   - component: {fileID: 7856860784206606327}
   - component: {fileID: 6968832939828522833}
   - component: {fileID: 8000666192574647775}
+  - component: {fileID: 3140361496880536170}
   m_Layer: 0
   m_Name: Enemy (18)
   m_TagString: Enemy
@@ -1957,6 +2198,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 3140361496880536170}
 --- !u!212 &7856860784206606327
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2056,6 +2298,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3140361496880536170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8354917970325541883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &8595671656221512607
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,6 +2329,7 @@ GameObject:
   - component: {fileID: 7969148219735475532}
   - component: {fileID: 726066509540398468}
   - component: {fileID: 4637037643884489748}
+  - component: {fileID: 3193092023122983820}
   m_Layer: 0
   m_Name: Enemy (9)
   m_TagString: Enemy
@@ -2106,6 +2367,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 3193092023122983820}
 --- !u!212 &7969148219735475532
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2205,6 +2467,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3193092023122983820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8595671656221512607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &9134398600154456374
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,6 +2498,7 @@ GameObject:
   - component: {fileID: 3383770305212005720}
   - component: {fileID: 3901619819414256936}
   - component: {fileID: 8429539881435133691}
+  - component: {fileID: 7190698213621045018}
   m_Layer: 0
   m_Name: Enemy (8)
   m_TagString: Enemy
@@ -2255,6 +2536,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
+  audioCue: {fileID: 7190698213621045018}
 --- !u!212 &3383770305212005720
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2354,6 +2636,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7190698213621045018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9134398600154456374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1001 &60521837317816630
 PrefabInstance:
   m_ObjectHideFlags: 0

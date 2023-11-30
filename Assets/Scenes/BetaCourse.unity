@@ -4083,6 +4083,7 @@ GameObject:
   - component: {fileID: 124620616}
   - component: {fileID: 124620615}
   - component: {fileID: 124620614}
+  - component: {fileID: 124620619}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -4204,7 +4205,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
-  audioCue: {fileID: 0}
+  audioCue: {fileID: 124620619}
 --- !u!4 &124620618
 Transform:
   m_ObjectHideFlags: 0
@@ -4220,6 +4221,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124620619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124620613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &156185312
 GameObject:
   m_ObjectHideFlags: 0
@@ -5405,6 +5424,7 @@ GameObject:
   - component: {fileID: 372990451}
   - component: {fileID: 372990450}
   - component: {fileID: 372990449}
+  - component: {fileID: 372990454}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -5526,7 +5546,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
-  audioCue: {fileID: 0}
+  audioCue: {fileID: 372990454}
 --- !u!4 &372990453
 Transform:
   m_ObjectHideFlags: 0
@@ -5542,6 +5562,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &372990454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372990448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &380618791
 GameObject:
   m_ObjectHideFlags: 0
@@ -6164,6 +6202,7 @@ GameObject:
   - component: {fileID: 559888143}
   - component: {fileID: 559888142}
   - component: {fileID: 559888141}
+  - component: {fileID: 559888146}
   m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Enemy
@@ -6285,7 +6324,7 @@ MonoBehaviour:
   HorizontalDampening: 0.75
   DestroyParticles: {fileID: 1964253727652353979, guid: 6262d37a9f946404888c96ad9f1e9ea6, type: 3}
   EnemyCorpseParticles: {fileID: 429187606330945478, guid: ff6ed84e06791ec49910275c3e6c2424, type: 3}
-  audioCue: {fileID: 0}
+  audioCue: {fileID: 559888146}
 --- !u!4 &559888145
 Transform:
   m_ObjectHideFlags: 0
@@ -6301,6 +6340,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &559888146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559888140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 5a81d1fdca3d9d44794132ee9b494401, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: a095b795575607f4881507c550fe3f42, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &603884385
 GameObject:
   m_ObjectHideFlags: 0
