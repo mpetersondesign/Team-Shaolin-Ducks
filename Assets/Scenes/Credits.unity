@@ -4210,6 +4210,8 @@ GameObject:
   - component: {fileID: 1967202510}
   - component: {fileID: 1967202509}
   - component: {fileID: 1967202508}
+  - component: {fileID: 1967202511}
+  - component: {fileID: 1967202512}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -4258,7 +4260,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4331,6 +4333,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967202506}
   m_CullTransparentMesh: 1
+--- !u!114 &1967202511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967202506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 487577ba8d22275499ac6b4ca9efa6a1, type: 2}
+  - {fileID: 11400000, guid: d4fc6fd09c099c1459894907268d3031, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: 4562de2ec0e76a143bf5c73ccb1163bb, type: 2}
+  - {fileID: 11400000, guid: a8f5eef10b29cb74f8bb69ca8a496a20, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
+--- !u!114 &1967202512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967202506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1967202511}
+          m_TargetAssemblyTypeName: AudioCue, Assembly-CSharp
+          m_MethodName: PlayAudioCue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1967202511}
+          m_TargetAssemblyTypeName: AudioCue, Assembly-CSharp
+          m_MethodName: PlayAudioCue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2044176446
 GameObject:
   m_ObjectHideFlags: 0

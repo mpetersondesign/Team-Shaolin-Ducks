@@ -9,6 +9,11 @@ public class BounceableObject : MonoBehaviour
     public ParticleSystem DestroyParticles;
     public ParticleSystem EnemyCorpseParticles;
     public AudioCue audioCue;
+    public void Start()
+    {
+        if (audioCue == null)
+            audioCue = GetComponent<AudioCue>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")

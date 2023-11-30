@@ -324,6 +324,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147819973}
   m_CullTransparentMesh: 1
+--- !u!1001 &236443888
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2405199610128421772, guid: 45a526226bad74841bfcdafc02b9af25, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405199610128421772, guid: 45a526226bad74841bfcdafc02b9af25, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.3515029
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405199610128421772, guid: 45a526226bad74841bfcdafc02b9af25, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.848332
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405199610128421772, guid: 45a526226bad74841bfcdafc02b9af25, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.5260324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405199610128421772, guid: 45a526226bad74841bfcdafc02b9af25, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405199610128421772, guid: 45a526226bad74841bfcdafc02b9af25, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405199610128421772, guid: 45a526226bad74841bfcdafc02b9af25, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405199610128421772, guid: 45a526226bad74841bfcdafc02b9af25, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405199610128421772, guid: 45a526226bad74841bfcdafc02b9af25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405199610128421772, guid: 45a526226bad74841bfcdafc02b9af25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405199610128421772, guid: 45a526226bad74841bfcdafc02b9af25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354272101445401538, guid: 45a526226bad74841bfcdafc02b9af25, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 45a526226bad74841bfcdafc02b9af25, type: 3}
 --- !u!1 &584788607
 GameObject:
   m_ObjectHideFlags: 0
@@ -4596,6 +4653,8 @@ GameObject:
   - component: {fileID: 1228588067}
   - component: {fileID: 1228588066}
   - component: {fileID: 1228588068}
+  - component: {fileID: 1228588070}
+  - component: {fileID: 1228588069}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -4682,8 +4741,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.86666673, g: 0.86666673, b: 0.86666673, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -4717,6 +4776,71 @@ MonoBehaviour:
           m_StringArgument: BetaCourse
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1228588069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228588064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1228588070}
+          m_TargetAssemblyTypeName: AudioCue, Assembly-CSharp
+          m_MethodName: PlayAudioCue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1228588070}
+          m_TargetAssemblyTypeName: AudioCue, Assembly-CSharp
+          m_MethodName: PlayAudioCue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1228588070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228588064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 79563b8666843904ebbba4b54f07d947, type: 2}
+  - {fileID: 11400000, guid: d4fc6fd09c099c1459894907268d3031, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: 4562de2ec0e76a143bf5c73ccb1163bb, type: 2}
+  - {fileID: 11400000, guid: a8f5eef10b29cb74f8bb69ca8a496a20, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
 --- !u!1 &1358517849
 GameObject:
   m_ObjectHideFlags: 0
@@ -4797,6 +4921,8 @@ GameObject:
   - component: {fileID: 1837986723}
   - component: {fileID: 1837986722}
   - component: {fileID: 1837986724}
+  - component: {fileID: 1837986725}
+  - component: {fileID: 1837986726}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -4883,7 +5009,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.86666673, g: 0.86666673, b: 0.86666673, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4918,6 +5044,71 @@ MonoBehaviour:
           m_StringArgument: Exit
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1837986725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837986720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 487577ba8d22275499ac6b4ca9efa6a1, type: 2}
+  - {fileID: 11400000, guid: d4fc6fd09c099c1459894907268d3031, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: 4562de2ec0e76a143bf5c73ccb1163bb, type: 2}
+  - {fileID: 11400000, guid: a8f5eef10b29cb74f8bb69ca8a496a20, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
+--- !u!114 &1837986726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837986720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1837986725}
+          m_TargetAssemblyTypeName: AudioCue, Assembly-CSharp
+          m_MethodName: PlayAudioCue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1837986725}
+          m_TargetAssemblyTypeName: AudioCue, Assembly-CSharp
+          m_MethodName: PlayAudioCue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2034755654
 GameObject:
   m_ObjectHideFlags: 0
@@ -5066,6 +5257,8 @@ GameObject:
   - component: {fileID: 2068069026}
   - component: {fileID: 2068069025}
   - component: {fileID: 2068069027}
+  - component: {fileID: 2068069028}
+  - component: {fileID: 2068069029}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -5152,7 +5345,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.86666673, g: 0.86666673, b: 0.86666673, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -5187,3 +5380,68 @@ MonoBehaviour:
           m_StringArgument: Credits
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2068069028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068069023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c466f3ec99455054e9815afabd7e75d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
+  audioCues:
+  - {fileID: 11400000, guid: 79563b8666843904ebbba4b54f07d947, type: 2}
+  - {fileID: 11400000, guid: d4fc6fd09c099c1459894907268d3031, type: 2}
+  audioConfigs:
+  - {fileID: 11400000, guid: 4562de2ec0e76a143bf5c73ccb1163bb, type: 2}
+  - {fileID: 11400000, guid: a8f5eef10b29cb74f8bb69ca8a496a20, type: 2}
+  audioChannel: {fileID: 11400000, guid: 1a4103c86506ace40b0aa86232546576, type: 2}
+--- !u!114 &2068069029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068069023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2068069028}
+          m_TargetAssemblyTypeName: AudioCue, Assembly-CSharp
+          m_MethodName: PlayAudioCue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2068069028}
+          m_TargetAssemblyTypeName: AudioCue, Assembly-CSharp
+          m_MethodName: PlayAudioCue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
