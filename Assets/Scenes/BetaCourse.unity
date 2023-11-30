@@ -44801,11 +44801,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1439417672274142965, guid: bccda69fa5acbe44d901207791d67b7f, type: 3}
       propertyPath: m_Offset.y
-      value: 2.24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3718302708794905146, guid: bccda69fa5acbe44d901207791d67b7f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6203421920455942984, guid: bccda69fa5acbe44d901207791d67b7f, type: 3}
       propertyPath: m_RootOrder
